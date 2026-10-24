@@ -4,6 +4,8 @@ export type AttemptState = {
   completed: boolean;
   attempts: number;
   firstAttemptCorrect: boolean | null;
+  usedHint?: boolean;
+  startedAt?: number;
 };
 export const initialAttempt = (): AttemptState => ({
   misses: 0,
@@ -14,6 +16,7 @@ export const initialAttempt = (): AttemptState => ({
 export function attempt(state: AttemptState, correct: boolean): AttemptState {
   if (state.completed) return state;
   return {
+    ...state,
     misses: state.misses + Number(!correct),
     completed: correct,
     attempts: state.attempts + 1,

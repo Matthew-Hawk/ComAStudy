@@ -1,11 +1,13 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { emptyProgress, localProgressStorage, useStudy } from "./storage";
+import { emptyProgress, createStudyStore } from "./storage";
+import { createProgressStorage } from "./persistence/repository";
 afterEach(() => {
   localStorage.clear();
   vi.restoreAllMocks();
 });
 describe("local persistence boundary", () => {
-  it("round-trips saved progress and miss counts", () => {
+  it("round-trips saved progress and miss counts", async () => {
+    const repository = createProgressStorage(null, localStorage);
     const progress = emptyProgress();
     progress.attempts["item"] = {
       misses: 3,
@@ -13,24 +15,30 @@ describe("local persistence boundary", () => {
       completed: true,
       firstAttemptCorrect: false,
     };
-    expect(localProgressStorage.write(progress)).toBe(true);
-    expect(localProgressStorage.read()).toEqual(progress);
+    expect(await repository.save(progress)).toBe(true);
+    expect(await repository.read()).toEqual(progress);
   });
-  it("recovers from malformed or incompatible saved JSON", () => {
+  it("recovers from malformed or incompatible saved JSON", async () => {
+    const repository = createProgressStorage(null, localStorage);
     localStorage.setItem("studybench.progress.v1", "{invalid");
-    expect(localProgressStorage.read()).toEqual(emptyProgress());
+    expect(await repository.read()).toEqual(emptyProgress());
     localStorage.setItem(
       "studybench.progress.v1",
       JSON.stringify({ version: 999 }),
     );
-    expect(localProgressStorage.read()).toEqual(emptyProgress());
+    expect(await repository.read()).toEqual(emptyProgress());
   });
-  it("keeps an in-memory session usable when persistent storage fails", () => {
+  it("keeps an in-memory session usable when persistent storage fails", async () => {
+    const useStudy = createStudyStore(
+      createProgressStorage(null, localStorage),
+    );
+    await useStudy.getState().initialize();
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new Error("Quota exceeded");
     });
     useStudy.setState({ progress: emptyProgress(), storageError: false });
     useStudy.getState().update((p) => ({ ...p, motion: false }));
+    await new Promise((resolve) => setTimeout(resolve, 0));
     expect(useStudy.getState().progress.motion).toBe(false);
     expect(useStudy.getState().storageError).toBe(true);
   });

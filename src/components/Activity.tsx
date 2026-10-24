@@ -290,18 +290,22 @@ export function Activity({
   state,
   onAttempt,
   onNext,
+  onHint,
 }: {
   item: Item;
   objective: Objective;
   state: AttemptState;
   onAttempt: (s: AttemptState) => void;
   onNext: () => void;
+  onHint?: (state: AttemptState) => void;
 }) {
   const [answer, setAnswer] = useState<Answer>("");
   const [revealed, reveal] = useState(false);
   const [review, setReview] = useState(false);
   const [wrong, setWrong] = useState("");
   const [showRetry, setRetry] = useState(false);
+  const [requestedHint, setRequestedHint] = useState(!!state.usedHint);
+  const startedAt = useRef(state.startedAt ?? Date.now());
   const feedbackRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -321,7 +325,14 @@ export function Activity({
   function submit(value: Answer = answer) {
     if (state.completed || showRetry) return;
     const correct = isCorrect(item, value);
-    const next = attempt(state, correct);
+    const next = attempt(
+      {
+        ...state,
+        usedHint: state.usedHint || requestedHint,
+        startedAt: startedAt.current,
+      },
+      correct,
+    );
     if (!correct) {
       const context =
         item.type === "drag_match"
@@ -348,6 +359,11 @@ export function Activity({
     headingRef.current?.focus();
   }
   const label = item.type.replaceAll("_", " ");
+  function requestHint() {
+    setRequestedHint(true);
+    setReview(true);
+    onHint?.({ ...state, usedHint: true, startedAt: startedAt.current });
+  }
   return (
     <section className="activity-panel" aria-label="Practice activity">
       <div className="eyebrow">PRACTICE · {label}</div>
@@ -355,6 +371,36 @@ export function Activity({
         {prompt.replace("{{blank}}", "_____")}
       </h2>
       {item.visual && <Visual id={item.visual} />}
+      {!showRetry && !state.completed && help.hint && (
+        <div className="feedback learning">
+          <p>
+            <strong>Hint:</strong>{" "}
+            {item.type === "fill_in_blank"
+              ? item.hint
+              : "Use the highlighted passage to identify the role or dependency involved."}
+          </p>
+          {help.walkthrough && (
+            <div className="walkthrough">
+              <strong>A worked walkthrough</strong>
+              <p>{item.walkthrough}</p>
+            </div>
+          )}
+        </div>
+      )}
+      {!state.completed && !showRetry && (
+        <div className="hint-controls">
+          <button className="secondary" onClick={requestHint}>
+            <Lightbulb size={16} /> Request a hint
+          </button>
+          {requestedHint && (
+            <p className="helper">
+              {item.type === "fill_in_blank"
+                ? item.hint
+                : "Use the highlighted lesson passage to connect the requirement with the right concept."}
+            </p>
+          )}
+        </div>
+      )}
       {!showRetry && !state.completed && (
         <div key={state.misses}>
           {item.type === "multiple_choice" && (
@@ -498,14 +544,16 @@ export function Activity({
           </div>
         )}
       </div>
-      {(review || (help.highlight && showRetry)) && (
+      {(review || requestedHint || (help.highlight && !state.completed)) && (
         <aside className="lesson-review">
           <h3>
             <BookOpen size={18} /> Review lesson
           </h3>
           <Lesson
             objective={objective}
-            highlight={help.highlight ? item.lessonAnchor : undefined}
+            highlight={
+              help.highlight || requestedHint ? item.lessonAnchor : undefined
+            }
             compact
           />
         </aside>

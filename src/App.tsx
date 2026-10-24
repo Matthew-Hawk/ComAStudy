@@ -38,6 +38,15 @@ import { getAttempt, useStudy } from "./storage";
 import { buildChapterSession, type SessionItem } from "./engine/session";
 import { Activity } from "./components/Activity";
 import { Lesson } from "./components/Lesson";
+import {
+  LearningDashboard,
+  MasteryRing,
+  RewardFeedback,
+} from "./components/LearningDashboard";
+import { ProgressTools } from "./components/ProgressTools";
+import { DailyReview } from "./components/DailyReview";
+import { objectiveMastery } from "./engine/mastery";
+import { earlierDueItems } from "./engine/session";
 const icons = [
   Smartphone,
   Network,
@@ -179,6 +188,9 @@ function Layout() {
           <NavLink to="/guide">
             <CircleHelp size={19} /> How it works
           </NavLink>
+          <NavLink to="/review">
+            <CheckCircle2 size={19} /> Daily review
+          </NavLink>
           <NavLink to="/settings">
             <Settings2 size={19} /> Preferences
           </NavLink>
@@ -249,15 +261,17 @@ function Layout() {
               element={<Flow />}
             />
             <Route path="/settings" element={<Preferences />} />
+            <Route path="/review" element={<DailyReview />} />
             <Route path="/guide" element={<Guide />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <footer className="page-footer">
           <span>Built for understanding, one concept at a time.</span>
-          <span>Independent study material · Phase 1</span>
+          <span>Independent study material · Phase 2</span>
         </footer>
       </div>
+      <RewardFeedback />
     </>
   );
 }
@@ -289,6 +303,7 @@ function Home() {
           <span className="local-dot" /> No account needed
         </span>
       </div>
+      <LearningDashboard />
       <section className="welcome-panel">
         <div className="welcome-copy">
           <span className="pill">YOUR IT STUDY WORKSPACE</span>
@@ -366,6 +381,7 @@ function Home() {
                     CHAPTER {String(d.number).padStart(2, "0")}
                   </span>
                   <ArrowUpRight className="card-arrow" size={19} />
+                  <MasteryRing domain={d} />
                 </div>
                 <h3>{d.title}</h3>
                 <p>{d.description}</p>
@@ -418,11 +434,14 @@ function Home() {
   );
 }
 function Chapter() {
+  const [query] = useSearchParams();
   const { domainId } = useParams();
   const d = domains.find((d) => d.id === domainId);
   const { progress } = useStudy();
   if (!d) return <NotFound />;
-  const resume = progress.resume[d.id];
+  const saved = progress.resume[d.id];
+  const resume =
+    saved && d.objectives.some((o) => o.id === saved.start) ? saved : undefined;
   const session = resume ? buildChapterSession(d, resume.start) : [];
   return (
     <div className="chapter-page">
@@ -442,10 +461,43 @@ function Chapter() {
         </div>
       </div>
       <div className="chapter-facts">
+        <MasteryRing domain={d} />
         <span>{d.weight}% of exam</span>
         <span>{d.objectives.length} seed sections</span>
         <span>All sections unlocked</span>
       </div>
+      {query.get("finished") && (
+        <div className="resume-banner">
+          <div>
+            <strong>You reached the end of this chapter.</strong>
+            <p>
+              Your progress is saved.{" "}
+              {
+                earlierDueItems(
+                  d,
+                  query.get("finished")!,
+                  progress.schedules,
+                  Date.now(),
+                ).length
+              }{" "}
+              earlier items are due for an optional review.
+            </p>
+          </div>
+          {earlierDueItems(
+            d,
+            query.get("finished")!,
+            progress.schedules,
+            Date.now(),
+          ).length > 0 && (
+            <Link
+              className="secondary"
+              to={`/review?chapter=${d.id}&before=${query.get("finished")}`}
+            >
+              Review earlier sections
+            </Link>
+          )}
+        </div>
+      )}
       {resume && session[resume.cursor] && (
         <div className="resume-banner">
           <div>
@@ -498,6 +550,7 @@ function Chapter() {
                 <h3>{o.title}</h3>
                 <p>{o.summary}</p>
                 <span className="section-status">
+                  <strong>{objectiveMastery(o, progress.schedules)}</strong> ·{" "}
                   {done === o.activities.length
                     ? "Completed"
                     : done
@@ -520,9 +573,9 @@ function Chapter() {
       <div className="seed-note">
         <CircleHelp size={18} />
         <p>
-          Phase 1 shows completion only. Learning / Familiar / Mastered ratings
-          arrive with spaced repetition in Phase 2. This chapter seeds{" "}
-          {d.objectives.length} of {d.objectiveCount} exam objectives.
+          Mastery reflects independent recall and review intervals across
+          available seed sections. This chapter seeds {d.objectives.length} of{" "}
+          {d.objectiveCount} exam objectives.
         </p>
       </div>
     </div>
@@ -535,10 +588,34 @@ function Flow() {
   const { domainId, objectiveId, itemId } = useParams();
   const [query] = useSearchParams();
   const navigate = useNavigate();
-  const { progress, update } = useStudy();
+  const { progress, update, answer } = useStudy();
   const d = domains.find((d) => d.id === domainId);
   const o = d?.objectives.find((o) => o.id === objectiveId);
   const start = query.get("start") ?? objectiveId ?? "";
+  useEffect(() => {
+    if (!d || !o || !d.objectives.some((section) => section.id === start))
+      return;
+    const items = buildChapterSession(d, start);
+    const cursor = items.findIndex(
+      (i) => i.objectiveId === o.id && i.itemId === (itemId ?? "lesson"),
+    );
+    if (
+      cursor < 0 ||
+      items
+        .slice(0, cursor)
+        .some((i) =>
+          i.kind === "lesson"
+            ? !progress.lessons.includes(i.objectiveId)
+            : !progress.attempts[i.itemId]?.completed,
+        )
+    )
+      return;
+    update((p) => ({
+      ...p,
+      lastChapter: d.id,
+      resume: { ...p.resume, [d.id]: { start, cursor, updatedAt: Date.now() } },
+    }));
+  }, [domainId, objectiveId, itemId, start]);
   if (!d || !o || !d.objectives.some((o) => o.id === start))
     return <NotFound />;
   const session = buildChapterSession(d, start);
@@ -559,14 +636,26 @@ function Flow() {
       update((p) => ({
         ...p,
         lessons: p.lessons.includes(o!.id) ? p.lessons : [...p.lessons, o!.id],
+        objectives: {
+          ...p.objectives,
+          [o!.id]: {
+            lessonRead: true,
+            completedItems: p.objectives[o!.id]?.completedItems ?? [],
+            updatedAt: Date.now(),
+          },
+        },
       }));
     const cursor = index + 1;
     update((p) => ({
       ...p,
-      resume: { ...p.resume, [d!.id]: { start, cursor } },
+      resume: {
+        ...p.resume,
+        [d!.id]: { start, cursor, updatedAt: Date.now() },
+      },
+      lastChapter: d!.id,
     }));
     if (session[cursor]) navigate(itemPath(d!, session[cursor], start));
-    else navigate(`/chapters/${d!.id}`);
+    else navigate(`/chapters/${d!.id}?finished=${start}`);
   }
   const activity = o.activities.find((a) => a.id === itemId);
   return (
@@ -578,7 +667,11 @@ function Flow() {
           onClick={() =>
             update((p) => ({
               ...p,
-              resume: { ...p.resume, [d.id]: { start, cursor: index } },
+              resume: {
+                ...p.resume,
+                [d.id]: { start, cursor: index, updatedAt: Date.now() },
+              },
+              lastChapter: d.id,
             }))
           }
         >
@@ -612,10 +705,12 @@ function Flow() {
               objective={o}
               state={getAttempt(progress, activity.id)}
               onAttempt={(state) =>
+                answer(activity.id, o.id, state, Date.now())
+              }
+              onHint={(hint) =>
                 update((p) => ({
                   ...p,
-                  attempts: { ...p.attempts, [activity.id]: state },
-                  resume: { ...p.resume, [d.id]: { start, cursor: index } },
+                  attempts: { ...p.attempts, [activity.id]: hint },
                 }))
               }
               onNext={next}
@@ -701,12 +796,13 @@ function Preferences() {
           />
         </label>
       </section>
+      <ProgressTools />
       <div className="seed-note">
         <CircleHelp size={17} />
         <p>
-          Progress is stored in this browser behind a replaceable storage
-          interface. Export/import and account sync are outside Phase 1. Sound
-          is not used in this phase.
+          Progress is saved on this device using IndexedDB, with a localStorage
+          fallback and recovery journal. Export a backup to move it to another
+          browser. Account sync and sound are not included in this phase.
         </p>
       </div>
     </div>

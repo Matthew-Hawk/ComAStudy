@@ -1,4 +1,200 @@
 @import "tailwindcss";
+.learning-dashboard {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 25px;
+}
+.learning-dashboard > div,
+.learning-dashboard > .resume-mini {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.learning-dashboard strong {
+  font-size: 14px;
+}
+.learning-dashboard > div > span {
+  width: 100%;
+  font-size: 11px;
+  color: var(--muted);
+}
+.learning-dashboard .secondary {
+  min-height: 36px;
+  padding: 7px 10px;
+  font-size: 11px;
+}
+.resume-mini {
+  grid-column: 1/-1;
+  align-items: center !important;
+}
+.resume-mini > span {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.resume-mini > svg {
+  margin-left: auto;
+}
+.mastery-ring {
+  --progress: 0%;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) var(--progress), var(--border) 0);
+  padding: 4px;
+}
+.mastery-ring > span {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--surface);
+  font-size: 10px;
+  font-weight: 650;
+  color: var(--accent);
+}
+.card-top .mastery-ring {
+  margin-left: 4px;
+}
+.hint-controls {
+  margin-bottom: 20px;
+}
+.reward-feedback {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+  display: grid;
+  gap: 12px;
+  max-width: min(420px, calc(100vw - 32px));
+  pointer-events: none;
+}
+.reward-feedback > div {
+  pointer-events: auto;
+}
+.xp-tick {
+  justify-self: end;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 10px 15px;
+  font-size: 14px;
+  animation: xp-tick 0.2s ease-out;
+}
+.badge-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 24px #0002;
+  border-radius: 10px;
+  padding: 17px;
+}
+.badge-toast strong {
+  font-size: 13px;
+}
+.badge-toast p {
+  font-size: 11px;
+  margin-top: 6px;
+}
+.badge-toast .icon-button {
+  min-width: 32px;
+  min-height: 32px;
+}
+.review-page {
+  max-width: 780px;
+  margin: auto;
+}
+.review-page > h1 {
+  margin: 15px 0 25px;
+}
+.narrow-page > .secondary {
+  margin-top: 20px;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+.import-button {
+  position: relative;
+  cursor: pointer;
+}
+.import-button input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.import-button:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+dialog {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 520px;
+  width: calc(100vw - 36px);
+}
+dialog::backdrop {
+  background: #16251bcc;
+}
+dialog h2 {
+  margin-bottom: 18px;
+}
+dialog p {
+  font-size: 14px;
+  margin: 15px 0;
+}
+@keyframes xp-tick {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 580px) {
+  .learning-dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+  .learning-dashboard > div:first-child {
+    grid-column: 1/-1;
+  }
+  .learning-dashboard > div {
+    padding: 14px;
+  }
+  .sidebar nav {
+    flex-wrap: wrap;
+  }
+  .sidebar nav a {
+    font-size: 10px;
+  }
+  .reward-feedback {
+    right: 16px;
+    bottom: 16px;
+  }
+  .mastery-ring {
+    width: 42px;
+    height: 42px;
+  }
+}
 :root {
   font-family:
     Inter,
