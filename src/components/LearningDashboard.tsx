@@ -24,14 +24,17 @@ export function MasteryRing({ domain }: { domain: Domain }) {
   const schedules = useStudy((s) => s.progress.schedules);
   const state = domainMastery(domain, schedules);
   return (
-    <span
-      className="mastery-ring"
-      role="img"
-      aria-label={`${domain.title}: ${state.percent}% mastery across available sections`}
-      style={{ "--progress": `${state.percent}%` } as React.CSSProperties}
-    >
-      <span>{state.percent}%</span>
-    </span>
+    <div className="mastery-meter">
+      <span
+        className="mastery-ring"
+        role="img"
+        aria-label={`${domain.title}: ${state.percent}% mastery across available sections`}
+        style={{ "--progress": `${state.percent}%` } as React.CSSProperties}
+      >
+        <span>{state.percent}%</span>
+      </span>
+      <small>Mastery</small>
+    </div>
   );
 }
 export function LearningDashboard() {

@@ -47,6 +47,7 @@ import { ProgressTools } from "./components/ProgressTools";
 import { DailyReview } from "./components/DailyReview";
 import { objectiveMastery } from "./engine/mastery";
 import { earlierDueItems } from "./engine/session";
+import { domainCompletion, objectiveCompletion } from "./engine/completion";
 const icons = [
   Smartphone,
   Network,
@@ -61,14 +62,6 @@ const icons = [
 function DomainIcon({ domain, size = 23 }: { domain: Domain; size?: number }) {
   const Icon = icons[domains.indexOf(domain)] ?? BookOpen;
   return <Icon size={size} strokeWidth={1.6} />;
-}
-function completedSections(
-  domain: Domain,
-  attempts: ReturnType<typeof useStudy.getState>["progress"]["attempts"],
-) {
-  return domain.objectives.filter((o) =>
-    o.activities.every((a) => attempts[a.id]?.completed),
-  ).length;
 }
 function WorkspaceSketch() {
   return (
@@ -288,9 +281,7 @@ function Home() {
   );
   const total = domains
     .flatMap((d) => d.objectives)
-    .filter((o) =>
-      o.activities.every((a) => progress.attempts[a.id]?.completed),
-    ).length;
+    .filter((o) => objectiveCompletion(o, progress).finished).length;
   return (
     <div className="home">
       <div className="page-heading">
@@ -366,7 +357,8 @@ function Home() {
         </div>
         <div className="chapter-grid">
           {chapters.map((d) => {
-            const count = completedSections(d, progress.attempts);
+            const completion = domainCompletion(d, progress);
+            const count = completion.completedSections;
             return (
               <Link
                 to={`/chapters/${d.id}`}
@@ -385,19 +377,23 @@ function Home() {
                 </div>
                 <h3>{d.title}</h3>
                 <p>{d.description}</p>
+                <div className="completion-summary">
+                  <strong>{completion.percent}% complete</strong>
+                  <span>Available seed content</span>
+                </div>
                 <div className="card-bottom">
                   <span>
                     {d.objectives.length} seed sections{" "}
                     <span className="dot-separator">·</span> {d.weight}% of exam
                   </span>
                   <span>
-                    {count === 2 ? (
+                    {count === d.objectives.length ? (
                       <>
                         <Check size={14} />
                         Completed
                       </>
                     ) : count ? (
-                      `${count}/2 completed`
+                      `${count}/${d.objectives.length} completed`
                     ) : (
                       <>
                         Explore <ChevronRight size={14} />
@@ -405,8 +401,15 @@ function Home() {
                     )}
                   </span>
                 </div>
-                <div className="card-progress">
-                  <span style={{ width: `${(count / 2) * 100}%` }} />
+                <div
+                  className="card-progress"
+                  role="progressbar"
+                  aria-label={`${d.title} completion of available sections`}
+                  aria-valuenow={completion.percent}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                >
+                  <span style={{ width: `${completion.percent}%` }} />
                 </div>
               </Link>
             );
@@ -462,6 +465,10 @@ function Chapter() {
       </div>
       <div className="chapter-facts">
         <MasteryRing domain={d} />
+        <strong>
+          {domainCompletion(d, progress).percent}% complete · available seed
+          content
+        </strong>
         <span>{d.weight}% of exam</span>
         <span>{d.objectives.length} seed sections</span>
         <span>All sections unlocked</span>
@@ -531,9 +538,8 @@ function Chapter() {
       </div>
       <ol className="section-map">
         {d.objectives.map((o, i) => {
-          const done = o.activities.filter(
-            (a) => progress.attempts[a.id]?.completed,
-          ).length;
+          const completion = objectiveCompletion(o, progress);
+          const done = completion.completed;
           return (
             <li key={o.id}>
               <span
@@ -551,12 +557,13 @@ function Chapter() {
                 <p>{o.summary}</p>
                 <span className="section-status">
                   <strong>{objectiveMastery(o, progress.schedules)}</strong> ·{" "}
+                  {completion.percent}% complete ·{" "}
                   {done === o.activities.length
                     ? "Completed"
                     : done
                       ? "In progress"
                       : "Not started"}{" "}
-                  · Lesson + {o.activities.length} activities
+                  · {done}/{o.activities.length} activities completed
                 </span>
               </div>
               <Link
@@ -573,9 +580,11 @@ function Chapter() {
       <div className="seed-note">
         <CircleHelp size={18} />
         <p>
-          Mastery reflects independent recall and review intervals across
-          available seed sections. This chapter seeds {d.objectives.length} of{" "}
-          {d.objectiveCount} exam objectives.
+          Completion tracks finished activities immediately. Mastery grows
+          through independent recall and spaced reviews, so it can remain at 0%
+          after a first pass. Both describe available seed sections. This
+          chapter seeds {d.objectives.length} of {d.objectiveCount} exam
+          objectives.
         </p>
       </div>
     </div>

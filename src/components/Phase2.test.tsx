@@ -54,6 +54,112 @@ const app = (path = "/") =>
     </MemoryRouter>,
   );
 describe("Phase 2 interaction paths", () => {
+  it("updates visible completion after a section and a whole chapter while labeling mastery separately", async () => {
+    const user = userEvent.setup();
+    const domain = domains[0];
+    app(`/chapters/${domain.id}/sections/${domain.objectives[0].id}/lesson`);
+    async function finishSection(index: number) {
+      await user.click(screen.getByRole("button", { name: /Start practice/ }));
+      for (const item of domain.objectives[index].activities) {
+        if (item.type === "multiple_choice") {
+          const correct = item.options.find((o) => o.id === item.correct)!;
+          await user.click(
+            screen.getByRole("radio", {
+              name: (name) => name.endsWith(correct.text),
+            }),
+          );
+          await user.click(
+            screen.getByRole("button", { name: /Check answer/ }),
+          );
+        } else if (item.type === "fill_in_blank") {
+          await user.type(
+            screen.getByRole("textbox", { name: "Your answer" }),
+            `${item.accepted[0]}{Enter}`,
+          );
+        } else if (item.type === "flashcard") {
+          await user.click(screen.getByRole("button", { name: "Turn card" }));
+          await user.click(screen.getByRole("button", { name: /I knew this/ }));
+        }
+        await user.click(screen.getByRole("button", { name: "Continue →" }));
+      }
+    }
+    await finishSection(0);
+    await user.click(screen.getByRole("link", { name: "Save & exit" }));
+    expect(
+      screen.getByText("50% complete · available seed content"),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("link", { name: "← Study library" }));
+    expect(
+      screen.getByRole("progressbar", {
+        name: `${domain.title} completion of available sections`,
+      }),
+    ).toHaveAttribute("aria-valuenow", "50");
+    expect(
+      screen.getByRole("img", {
+        name: `${domain.title}: 0% mastery across available sections`,
+      }),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("link", { name: /RESUME CHAPTER/ }));
+    await finishSection(1);
+    expect(
+      screen.getByText("100% complete · available seed content"),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("link", { name: "← Study library" }));
+    expect(
+      screen.getByRole("progressbar", {
+        name: `${domain.title} completion of available sections`,
+      }),
+    ).toHaveAttribute("aria-valuenow", "100");
+    cleanup();
+    app();
+    expect(
+      screen.getByRole("progressbar", {
+        name: `${domain.title} completion of available sections`,
+      }),
+    ).toHaveAttribute("aria-valuenow", "100");
+  });
+  it("refreshes completion on home when a daily-review answer is completed", () => {
+    const domain = domains[0];
+    const objective = domain.objectives[0];
+    const item = objective.activities[0];
+    useStudy.setState({
+      progress: {
+        ...emptyProgress(),
+        review: {
+          id: "review",
+          queue: [
+            { objectiveId: objective.id, itemId: item.id, kind: "activity" },
+          ],
+          cursor: 0,
+          completed: false,
+          source: "daily",
+          attempts: {},
+        },
+      },
+    });
+    app();
+    act(() =>
+      useStudy
+        .getState()
+        .answer(
+          item.id,
+          objective.id,
+          {
+            misses: 0,
+            attempts: 1,
+            completed: true,
+            firstAttemptCorrect: true,
+          },
+          Date.now(),
+          true,
+        ),
+    );
+    expect(
+      screen.getByRole("progressbar", {
+        name: `${domain.title} completion of available sections`,
+      }),
+    ).toHaveAttribute("aria-valuenow", "17");
+  });
   it("clears an XP tick when a replacement or a later miss clears its award", () => {
     useStudy.setState({ xpTick: 10, progress: { ...emptyProgress(), xp: 10 } });
     app();
