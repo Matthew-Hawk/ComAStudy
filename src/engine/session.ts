@@ -1,4 +1,4 @@
-import type { Domain } from "../content/schema";
+import type { DomainIndex as Domain } from "../content/index-types";
 import type { Schedule } from "./scheduler";
 import { LEARNING } from "../learning-config";
 export type SessionItem = {

@@ -1,0 +1,491 @@
+[
+  {
+    "id": "mobile-devices",
+    "exam": "220-1201",
+    "number": 1,
+    "title": "Mobile Devices",
+    "description": "Portable hardware, practical connections, and device support.",
+    "weight": 13,
+    "objectiveCount": 3,
+    "objectives": [
+      {
+        "id": "220-1201-1.1",
+        "number": "1.1",
+        "title": "Inside a mobile device",
+        "summary": "Replace components with care and a plan.",
+        "visual": "memory-board",
+        "activities": [
+          {
+            "id": "220-1201-1.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-1.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-1.1-card",
+            "type": "flashcard"
+          }
+        ]
+      },
+      {
+        "id": "220-1201-1.2",
+        "number": "1.2",
+        "title": "Connections on the go",
+        "summary": "Choose the right connection for the task.",
+        "visual": "connector-sheet",
+        "activities": [
+          {
+            "id": "220-1201-1.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-1.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-1.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "networking",
+    "exam": "220-1201",
+    "number": 2,
+    "title": "Networking",
+    "description": "Build a clear picture of how devices communicate.",
+    "weight": 23,
+    "objectiveCount": 8,
+    "objectives": [
+      {
+        "id": "220-1201-2.1",
+        "number": "2.1",
+        "title": "Ports, protocols & purpose",
+        "summary": "Understand the conversation behind a connection.",
+        "visual": "network-packet-hop",
+        "activities": [
+          {
+            "id": "220-1201-2.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-2.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-2.1-card",
+            "type": "flashcard"
+          },
+          {
+            "id": "network-port-match",
+            "type": "drag_match"
+          }
+        ]
+      },
+      {
+        "id": "220-1201-2.2",
+        "number": "2.2",
+        "title": "Wireless without the guesswork",
+        "summary": "Make sense of bands, channels, and interference.",
+        "visual": "network-packet-hop",
+        "activities": [
+          {
+            "id": "220-1201-2.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-2.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-2.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hardware",
+    "exam": "220-1201",
+    "number": 3,
+    "title": "Hardware",
+    "description": "Get to know the components behind every workstation.",
+    "weight": 25,
+    "objectiveCount": 8,
+    "objectives": [
+      {
+        "id": "220-1201-3.1",
+        "number": "3.1",
+        "title": "Displays, pixels & panels",
+        "summary": "Separate panel technology from display settings.",
+        "visual": "connector-sheet",
+        "activities": [
+          {
+            "id": "220-1201-3.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-3.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-3.1-card",
+            "type": "flashcard"
+          }
+        ]
+      },
+      {
+        "id": "220-1201-3.2",
+        "number": "3.2",
+        "title": "Cables that fit the job",
+        "summary": "Identify connections by purpose and capability.",
+        "visual": "connector-sheet",
+        "activities": [
+          {
+            "id": "220-1201-3.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-3.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-3.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "virtualization-cloud",
+    "exam": "220-1201",
+    "number": 4,
+    "title": "Virtualization and Cloud Computing",
+    "description": "Understand virtual environments and shared resources.",
+    "weight": 11,
+    "objectiveCount": 2,
+    "objectives": [
+      {
+        "id": "220-1201-4.1",
+        "number": "4.1",
+        "title": "A computer within a computer",
+        "summary": "Understand hosts, guests, and hypervisors.",
+        "visual": "virtual-layers",
+        "activities": [
+          {
+            "id": "220-1201-4.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-4.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-4.1-card",
+            "type": "flashcard"
+          },
+          {
+            "id": "virtual-stack-order",
+            "type": "drag_order"
+          }
+        ]
+      },
+      {
+        "id": "220-1201-4.2",
+        "number": "4.2",
+        "title": "Cloud services & responsibility",
+        "summary": "Know what the provider manages and what you manage.",
+        "visual": "virtual-layers",
+        "activities": [
+          {
+            "id": "220-1201-4.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-4.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-4.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hardware-troubleshooting",
+    "exam": "220-1201",
+    "number": 5,
+    "title": "Hardware and Network Troubleshooting",
+    "description": "Turn symptoms into evidence and a reliable resolution.",
+    "weight": 28,
+    "objectiveCount": 6,
+    "objectives": [
+      {
+        "id": "220-1201-5.1",
+        "number": "5.1",
+        "title": "When hardware misbehaves",
+        "summary": "Connect power, memory, and thermal symptoms.",
+        "visual": "memory-board",
+        "activities": [
+          {
+            "id": "220-1201-5.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-5.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-5.1-card",
+            "type": "flashcard"
+          }
+        ]
+      },
+      {
+        "id": "220-1201-5.2",
+        "number": "5.2",
+        "title": "Drive trouble & RAID recovery",
+        "summary": "Protect data before pursuing a repair.",
+        "visual": "raid-mirror",
+        "activities": [
+          {
+            "id": "220-1201-5.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1201-5.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1201-5.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "operating-systems",
+    "exam": "220-1202",
+    "number": 1,
+    "title": "Operating Systems",
+    "description": "Install, maintain, and work across everyday platforms.",
+    "weight": 28,
+    "objectiveCount": 11,
+    "objectives": [
+      {
+        "id": "220-1202-1.1",
+        "number": "1.1",
+        "title": "Operating systems & filesystems",
+        "summary": "Match the platform to the workload.",
+        "visual": "virtual-layers",
+        "activities": [
+          {
+            "id": "220-1202-1.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-1.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-1.1-card",
+            "type": "flashcard"
+          }
+        ]
+      },
+      {
+        "id": "220-1202-1.2",
+        "number": "1.2",
+        "title": "Install with a recovery plan",
+        "summary": "Prepare, deploy, and verify an operating system.",
+        "visual": "support-cycle",
+        "activities": [
+          {
+            "id": "220-1202-1.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-1.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-1.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "security",
+    "exam": "220-1202",
+    "number": 2,
+    "title": "Security",
+    "description": "Protect devices, information, and the people using them.",
+    "weight": 28,
+    "objectiveCount": 11,
+    "objectives": [
+      {
+        "id": "220-1202-2.1",
+        "number": "2.1",
+        "title": "Security in layers",
+        "summary": "Protect people, devices, and access.",
+        "visual": "support-cycle",
+        "activities": [
+          {
+            "id": "220-1202-2.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-2.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-2.1-card",
+            "type": "flashcard"
+          },
+          {
+            "id": "security-factor-sort",
+            "type": "drag_sort"
+          }
+        ]
+      },
+      {
+        "id": "220-1202-2.2",
+        "number": "2.2",
+        "title": "Everyday Windows protection",
+        "summary": "Use accounts, encryption, and permissions deliberately.",
+        "visual": "support-cycle",
+        "activities": [
+          {
+            "id": "220-1202-2.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-2.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-2.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "software-troubleshooting",
+    "exam": "220-1202",
+    "number": 3,
+    "title": "Software Troubleshooting",
+    "description": "Find the cause of application and operating system issues.",
+    "weight": 23,
+    "objectiveCount": 4,
+    "objectives": [
+      {
+        "id": "220-1202-3.1",
+        "number": "3.1",
+        "title": "Diagnose Windows issues",
+        "summary": "Use evidence before changing a working system.",
+        "visual": "support-cycle",
+        "activities": [
+          {
+            "id": "220-1202-3.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-3.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-3.1-card",
+            "type": "flashcard"
+          }
+        ]
+      },
+      {
+        "id": "220-1202-3.2",
+        "number": "3.2",
+        "title": "Recover mobile applications",
+        "summary": "Troubleshoot crashes, updates, and connectivity.",
+        "visual": "support-cycle",
+        "activities": [
+          {
+            "id": "220-1202-3.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-3.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-3.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "operational-procedures",
+    "exam": "220-1202",
+    "number": 4,
+    "title": "Operational Procedures",
+    "description": "Bring good judgment and clear process to technical work.",
+    "weight": 21,
+    "objectiveCount": 10,
+    "objectives": [
+      {
+        "id": "220-1202-4.1",
+        "number": "4.1",
+        "title": "Leave a useful support trail",
+        "summary": "Write records that help the next technician.",
+        "visual": "support-cycle",
+        "activities": [
+          {
+            "id": "220-1202-4.1-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-4.1-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-4.1-card",
+            "type": "flashcard"
+          }
+        ]
+      },
+      {
+        "id": "220-1202-4.2",
+        "number": "4.2",
+        "title": "Make changes with confidence",
+        "summary": "Plan the change and the way back.",
+        "visual": "support-cycle",
+        "activities": [
+          {
+            "id": "220-1202-4.2-check",
+            "type": "multiple_choice"
+          },
+          {
+            "id": "220-1202-4.2-recall",
+            "type": "fill_in_blank"
+          },
+          {
+            "id": "220-1202-4.2-card",
+            "type": "flashcard"
+          }
+        ]
+      }
+    ]
+  }
+]

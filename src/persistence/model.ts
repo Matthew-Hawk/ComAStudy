@@ -3,7 +3,8 @@ import { emptyStreak } from "../engine/rewards";
 import { newSchedule } from "../engine/scheduler";
 import { domains } from "../content/load";
 import packageInfo from "../../package.json";
-export const SCHEMA_VERSION = 2;
+import { examSessionSchema, examHistoryBase } from "./exam-schema";
+export const SCHEMA_VERSION = 3;
 export const APP_VERSION = packageInfo.version;
 const count = z.number().int().nonnegative();
 const timestamp = z.number().finite().nonnegative();
@@ -120,6 +121,38 @@ export const progressSchema = z.object({
   ),
   review: reviewSchema.nullable(),
   lastChapter: z.string().nullable(),
+  sound: z.boolean(),
+  animationMode: z.enum(["on", "reduced", "off"]),
+  reviewLength: z.union([
+    z.literal(8),
+    z.literal(12),
+    z.literal(16),
+    z.literal(20),
+  ]),
+  examTimerDefault: z.boolean(),
+  activityDays: z.record(day, count),
+  examSession: examSessionSchema.nullable(),
+  examHistory: z.array(
+    z
+      .object({
+        ...examHistoryBase,
+        reviewAttempts: z.record(z.string(), attemptSchema),
+      })
+      .refine(
+        (s) =>
+          s.questions.length === s.length &&
+          s.correct <= s.length &&
+          s.score === Math.round((s.correct / s.length) * 100) &&
+          s.domainScores.reduce((n, d) => n + d.total, 0) === s.length &&
+          s.domainScores.reduce((n, d) => n + d.correct, 0) === s.correct &&
+          s.domainScores.every((d) => d.correct <= d.total) &&
+          s.missedIds.length === s.length - s.correct &&
+          new Set(s.questions.map((q) => q.itemId)).size === s.length &&
+          new Set(s.missedIds).size === s.missedIds.length &&
+          s.missedIds.every((id) => s.questions.some((q) => q.itemId === id)),
+        "Inconsistent exam result",
+      ),
+  ),
 });
 export type Progress = z.infer<typeof progressSchema>;
 export const emptyProgress = (): Progress => ({
@@ -137,6 +170,13 @@ export const emptyProgress = (): Progress => ({
   badges: [],
   review: null,
   lastChapter: null,
+  sound: false,
+  animationMode: "on",
+  reviewLength: 12,
+  examTimerDefault: false,
+  activityDays: {},
+  examSession: null,
+  examHistory: [],
 });
 export type Migration = (
   raw: Record<string, unknown>,
@@ -144,6 +184,17 @@ export type Migration = (
 ) => Record<string, unknown>;
 // Add future migrations here; supplied state is never mutated.
 export const migrations: Record<number, Migration> = {
+  2: (raw) => ({
+    ...raw,
+    schemaVersion: 3,
+    sound: false,
+    animationMode: raw.motion === false ? "off" : "on",
+    reviewLength: 12,
+    examTimerDefault: false,
+    activityDays: {},
+    examSession: null,
+    examHistory: [],
+  }),
   1: (raw, now) => {
     const schedules: Progress["schedules"] = {};
     const attempts: Progress["attempts"] = {};

@@ -88,8 +88,9 @@ describe("study routes and recovery", () => {
       "dark",
     );
     expect(document.documentElement.dataset.theme).toBe("dark");
-    await user.click(
-      screen.getByRole("checkbox", { name: /Animated illustrations/ }),
+    await user.selectOptions(
+      screen.getByRole("combobox", { name: "Animations" }),
+      "off",
     );
     expect(document.documentElement.dataset.motion).toBe("false");
   });

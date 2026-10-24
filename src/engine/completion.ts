@@ -1,4 +1,7 @@
-import type { Domain, Objective } from "../content/schema";
+import type {
+  DomainIndex as Domain,
+  ObjectiveIndex as Objective,
+} from "../content/index-types";
 import type { Progress } from "../persistence/model";
 type CompletionSource = Pick<Progress, "attempts" | "objectives">;
 export function objectiveCompletion(

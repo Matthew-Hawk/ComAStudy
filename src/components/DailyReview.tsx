@@ -5,12 +5,19 @@ import { domains } from "../content/load";
 import { useStudy } from "../storage";
 import { buildDailyReview } from "../engine/session";
 import { initialAttempt } from "../engine/retry";
-import { LEARNING } from "../learning-config";
+import { useDomain } from "../content/use-domain";
 import { useNow } from "./LearningDashboard";
 export function DailyReview() {
   const { progress, update, answer } = useStudy();
   const [query] = useSearchParams();
   const now = useNow();
+  const currentDomain = domains.find((d) =>
+    d.objectives.some(
+      (o) =>
+        o.id === progress.review?.queue[progress.review.cursor]?.objectiveId,
+    ),
+  );
+  const loaded = useDomain(currentDomain?.id);
   const scope = query.get("chapter");
   const start = query.get("before");
   const domain = domains.find((d) => d.id === scope);
@@ -27,7 +34,7 @@ export function DailyReview() {
     domains,
     progress.schedules,
     now,
-    LEARNING.reviewLimit,
+    progress.reviewLength,
     allowed,
   );
   const session = progress.review;
@@ -98,9 +105,11 @@ export function DailyReview() {
       </div>
     );
   const current = session.queue[session.cursor];
-  const objective = domains
-    .flatMap((d) => d.objectives)
-    .find((o) => o.id === current?.objectiveId);
+  if (session && !session.completed && !loaded.domain)
+    return <div role="status">{loaded.error || "Loading review…"}</div>;
+  const objective = (loaded.domain?.objectives ?? []).find(
+    (o) => o.id === current?.objectiveId,
+  );
   const item = objective?.activities.find((a) => a.id === current.itemId);
   if (!item || !objective)
     return (

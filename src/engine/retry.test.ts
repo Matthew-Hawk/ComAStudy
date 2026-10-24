@@ -8,7 +8,7 @@ import {
   variantPrompt,
 } from "./retry";
 import { buildChapterSession } from "./session";
-import { domains } from "../content/load";
+import { domains } from "../test/content";
 describe("supportive retry loop", () => {
   it("never permits a miss to complete an item, even after many attempts", () => {
     let s = initialAttempt();

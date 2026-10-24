@@ -39,7 +39,7 @@ export function Lesson({
             id={p.id}
             className={highlight === p.id ? "highlighted" : ""}
           >
-            <h3>{p.heading}</h3>
+            {compact ? <h4>{p.heading}</h4> : <h2>{p.heading}</h2>}
             <Markdown text={p.markdown} />
           </section>
         ))}

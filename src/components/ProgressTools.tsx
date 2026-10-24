@@ -6,6 +6,19 @@ import {
   importProgress,
   type Progress,
 } from "../persistence/model";
+export function downloadProgress(progress: Progress) {
+  const blob = new Blob([exportProgress(progress, Date.now())], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "study-progress.json";
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
 export function ProgressTools() {
   const { progress, replace } = useStudy();
   const [candidate, setCandidate] = useState<Progress | null>(null);
@@ -14,17 +27,7 @@ export function ProgressTools() {
   const dialog = useRef<HTMLDialogElement>(null);
   const input = useRef<HTMLInputElement>(null);
   function download() {
-    const blob = new Blob([exportProgress(progress, Date.now())], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "study-progress.json";
-    document.body.append(link);
-    link.click();
-    link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    downloadProgress(progress);
     setMessage("Progress exported. Keep this file somewhere safe.");
   }
   async function read(file?: File) {
@@ -119,13 +122,16 @@ export function ProgressTools() {
               The file contains {Object.keys(candidate.schedules).length}{" "}
               scheduled items, {Object.keys(candidate.objectives).length}{" "}
               section records, {candidate.xp} XP, a {candidate.streak.current}
-              -day streak, and {candidate.badges.length} badges.
+              -day streak, {candidate.badges.length} badges,{" "}
+              {candidate.examHistory.length} practice results, and{" "}
+              {candidate.examSession ? "one saved exam" : "no saved exam"}.
             </p>
             <p>
               Your current {progress.xp} XP,{" "}
               {Object.keys(progress.schedules).length} scheduled items, saved
-              positions, review session, and appearance preferences will be
-              replaced. Export a backup first if you want to keep them.
+              positions, review session, practice exam and history, daily
+              activity, and preferences will be replaced. Export a backup first
+              if you want to keep them.
             </p>
           </>
         )}

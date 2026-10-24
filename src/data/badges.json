@@ -1,12 +1,39 @@
 {
   "domain": [
-    { "id": "first-familiar", "title": "Finding your footing", "description": "Your first Familiar section in this chapter." },
-    { "id": "all-familiar", "title": "A solid foundation", "description": "Every available section in this chapter is Familiar or Mastered." },
-    { "id": "all-mastered", "title": "Built to last", "description": "Every available section in this chapter is Mastered." }
+    {
+      "id": "first-familiar",
+      "title": "Finding your footing",
+      "description": "Your first Familiar section in this chapter."
+    },
+    {
+      "id": "all-familiar",
+      "title": "A solid foundation",
+      "description": "Every available section in this chapter is Familiar or Mastered."
+    },
+    {
+      "id": "all-mastered",
+      "title": "Built to last",
+      "description": "Every available section in this chapter is Mastered."
+    }
   ],
   "streak": [
-    { "id": "streak-3", "days": 3, "title": "A steady start", "description": "A three-day study streak." },
-    { "id": "streak-7", "days": 7, "title": "A week of learning", "description": "A seven-day study streak." },
-    { "id": "streak-30", "days": 30, "title": "A lasting habit", "description": "A thirty-day study streak." }
+    {
+      "id": "streak-3",
+      "days": 3,
+      "title": "A steady start",
+      "description": "A three-day study streak."
+    },
+    {
+      "id": "streak-7",
+      "days": 7,
+      "title": "A week of learning",
+      "description": "A seven-day study streak."
+    },
+    {
+      "id": "streak-30",
+      "days": 30,
+      "title": "A lasting habit",
+      "description": "A thirty-day study streak."
+    }
   ]
 }

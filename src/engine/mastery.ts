@@ -1,4 +1,7 @@
-import type { Domain, Objective } from "../content/schema";
+import type {
+  DomainIndex as Domain,
+  ObjectiveIndex as Objective,
+} from "../content/index-types";
 import type { Schedule } from "./scheduler";
 import { LEARNING } from "../learning-config";
 export type Mastery = "Learning" | "Familiar" | "Mastered";

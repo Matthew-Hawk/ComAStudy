@@ -4,7 +4,7 @@ import { render, screen, cleanup, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach } from "vitest";
 import { Activity } from "./Activity";
-import { domains } from "../content/load";
+import { domains } from "../test/content";
 import { initialAttempt } from "../engine/retry";
 import type { Activity as Item } from "../content/schema";
 afterEach(cleanup);
@@ -28,6 +28,60 @@ function Harness({
   );
 }
 describe("activity UI", () => {
+  it("completes matching using keyboard selection and placement", async () => {
+    const user = userEvent.setup();
+    const item = domains
+      .flatMap((d) => d.objectives.flatMap((o) => o.activities))
+      .find((a) => a.type === "drag_match")!;
+    if (item.type !== "drag_match") throw Error();
+    render(<Harness item={item} />);
+    for (const pair of item.pairs) {
+      screen.getByRole("button", { name: pair.left }).focus();
+      await user.keyboard("{Enter}");
+      screen
+        .getByRole("button", { name: `Place selected item in ${pair.right}` })
+        .focus();
+      await user.keyboard("{Enter}");
+    }
+    screen.getByRole("button", { name: /Check answer/ }).focus();
+    await user.keyboard("{Enter}");
+    expect(screen.getByText("That’s right")).toBeInTheDocument();
+  });
+  it.each(["multiple_choice", "fill_in_blank", "flashcard"] as const)(
+    "completes %s with keyboard activation",
+    async (type) => {
+      const user = userEvent.setup();
+      const item = domains
+        .flatMap((d) => d.objectives.flatMap((o) => o.activities))
+        .find((a) => a.type === type)!;
+      render(<Harness item={item} />);
+      if (item.type === "multiple_choice") {
+        screen
+          .getByRole("radio", {
+            name: (n) =>
+              n.endsWith(item.options.find((o) => o.id === item.correct)!.text),
+          })
+          .focus();
+        await user.keyboard(" ");
+      }
+      if (item.type === "fill_in_blank") {
+        screen.getByRole("textbox").focus();
+        await user.keyboard(item.accepted[0]);
+      }
+      if (item.type === "flashcard") {
+        screen.getByRole("button", { name: "Turn card" }).focus();
+        await user.keyboard("{Enter}");
+        screen.getByRole("button", { name: /I knew this/ }).focus();
+        await user.keyboard("{Enter}");
+      } else {
+        screen.getByRole("button", { name: /Check answer/ }).focus();
+        await user.keyboard("{Enter}");
+      }
+      expect(
+        screen.getByRole("button", { name: "Continue →" }),
+      ).toBeInTheDocument();
+    },
+  );
   it("blocks advancement, escalates help, and accepts recovery after three misses", async () => {
     const user = userEvent.setup();
     const item = objective.activities[0];

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { domains } from "../content/load";
+import { domains } from "../test/content";
 import { emptyProgress } from "../persistence/model";
 import { objectiveCompletion, domainCompletion } from "./completion";
 import { attempt, initialAttempt } from "./retry";

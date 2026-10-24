@@ -11,7 +11,7 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "../App";
 import { useStudy, emptyProgress } from "../storage";
-import { domains } from "../content/load";
+import { domains } from "../test/content";
 import { newSchedule } from "../engine/scheduler";
 import { exportProgress } from "../persistence/model";
 beforeEach(() => {
@@ -139,20 +139,18 @@ describe("Phase 2 interaction paths", () => {
     });
     app();
     act(() =>
-      useStudy
-        .getState()
-        .answer(
-          item.id,
-          objective.id,
-          {
-            misses: 0,
-            attempts: 1,
-            completed: true,
-            firstAttemptCorrect: true,
-          },
-          Date.now(),
-          true,
-        ),
+      useStudy.getState().answer(
+        item.id,
+        objective.id,
+        {
+          misses: 0,
+          attempts: 1,
+          completed: true,
+          firstAttemptCorrect: true,
+        },
+        Date.now(),
+        true,
+      ),
     );
     expect(
       screen.getByRole("progressbar", {

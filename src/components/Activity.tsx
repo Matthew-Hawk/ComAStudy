@@ -99,32 +99,51 @@ function Target({
     </div>
   );
 }
-function Placement({
+export function Placement({
   item,
   seed,
   onChange,
+  initialAnswer,
+  deferInitialChange = false,
 }: {
   item: Extract<Item, { type: "drag_match" | "drag_sort" | "drag_order" }>;
   seed: number;
   onChange: (a: Answer) => void;
+  initialAnswer?: Answer;
+  deferInitialChange?: boolean;
 }) {
   const [selected, select] = useState<string | null>(null);
-  const [placed, setPlaced] = useState<Record<string, string>>({});
+  const [placed, setPlaced] = useState<Record<string, string>>(() =>
+    initialAnswer &&
+    typeof initialAnswer === "object" &&
+    !Array.isArray(initialAnswer)
+      ? initialAnswer
+      : {},
+  );
+  const [touched, setTouched] = useState(false);
+  const [announcement, announce] = useState("");
   const [order, setOrder] = useState<string[]>(
-    item.type === "drag_order"
-      ? shuffled(
-          item.steps.map((s) => s.id),
-          seed + 1,
-        )
-      : [],
+    item.type === "drag_order" &&
+      Array.isArray(initialAnswer) &&
+      initialAnswer.length === item.steps.length &&
+      new Set(initialAnswer).size === item.steps.length &&
+      initialAnswer.every((id) => item.steps.some((s) => s.id === id))
+      ? initialAnswer
+      : item.type === "drag_order"
+        ? shuffled(
+            item.steps.map((s) => s.id),
+            seed + 1,
+          )
+        : [],
   );
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 7 } }),
     useSensor(KeyboardSensor),
   );
   useEffect(() => {
-    onChange(item.type === "drag_order" ? order : placed);
-  }, [order, placed, item.type, onChange]);
+    if (!deferInitialChange || touched)
+      onChange(item.type === "drag_order" ? order : placed);
+  }, [order, placed, item.type, onChange, touched, deferInitialChange]);
   const tokens =
     item.type === "drag_order"
       ? item.steps
@@ -139,6 +158,10 @@ function Placement({
         : item.categories;
   function place(token: string | null, target: string) {
     if (!token) return;
+    announce(
+      `${tokens.find((t) => t.id === token)?.text ?? token} placed ${item.type === "drag_order" ? "before" : "in"} ${targets.find((t) => t.id === target)?.label ?? tokens.find((t) => t.id === target)?.text ?? target}.`,
+    );
+    setTouched(true);
     if (item.type === "drag_order") {
       setOrder((previous) => {
         if (token === target) return previous;
@@ -157,14 +180,35 @@ function Placement({
       });
     select(null);
   }
+  const labels = Object.fromEntries(tokens.map((t) => [t.id, t.text]));
+  const targetLabels = Object.fromEntries(targets.map((t) => [t.id, t.label]));
   return (
     <DndContext
+      accessibility={{
+        announcements: {
+          onDragStart: ({ active }) =>
+            `Picked up ${labels[String(active.id)]}. Use arrow keys to move and Space to drop, or Escape to cancel.`,
+          onDragOver: ({ active, over }) =>
+            over
+              ? `${labels[String(active.id)]} over ${targetLabels[String(over.id)] ?? labels[String(over.id)]}.`
+              : undefined,
+          onDragEnd: ({ active, over }) =>
+            over
+              ? `Placed ${labels[String(active.id)]} in ${targetLabels[String(over.id)] ?? labels[String(over.id)]}.`
+              : `${labels[String(active.id)]} returned to its previous position.`,
+          onDragCancel: ({ active }) =>
+            `Cancelled moving ${labels[String(active.id)]}.`,
+        },
+      }}
       sensors={sensors}
       onDragEnd={(e) => e.over && place(String(e.active.id), String(e.over.id))}
     >
       <p className="helper">
         Drag the handles, or select an item and then a destination. Use the
         arrow buttons to reorder steps.
+      </p>
+      <p className="sr-only" role="status">
+        {announcement}
       </p>
       {item.type === "drag_order" ? (
         <ol className="order-list">
@@ -177,13 +221,14 @@ function Placement({
               selected={selected === id}
               select={() => select(id)}
               place={() => place(selected, id)}
-              move={(delta) =>
+              move={(delta) => {
+                setTouched(true);
                 setOrder((previous) => {
                   const next = [...previous];
                   [next[i], next[i + delta]] = [next[i + delta], next[i]];
                   return next;
-                })
-              }
+                });
+              }}
               last={i === order.length - 1}
             />
           ))}

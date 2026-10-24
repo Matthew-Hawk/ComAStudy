@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { activitySchema, objectiveSchema, validateDomains } from "./schema";
-import { domains } from "./load";
+import { domains } from "../test/content";
 describe("content authoring validation", () => {
   it("validates every seeded domain and all six formats", () => {
     expect(validateDomains(domains)).toHaveLength(9);

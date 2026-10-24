@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { domains } from "../content/load";
+import { domains } from "../test/content";
 import { LEARNING } from "../learning-config";
 import {
   completeReview,

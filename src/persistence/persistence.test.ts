@@ -12,7 +12,7 @@ import { createProgressStorage, type Database } from "./repository";
 import { createStudyStore } from "../storage";
 import { newSchedule } from "../engine/scheduler";
 import { initialAttempt, attempt } from "../engine/retry";
-import { domains } from "../content/load";
+import { domains } from "../test/content";
 const now = Date.parse("2026-10-24T12:00:00Z");
 afterEach(() => {
   localStorage.clear();
@@ -105,7 +105,7 @@ describe("versioned backups", () => {
       motion: false,
     };
     const migrated = recoverProgress(old, now);
-    expect(migrated.schemaVersion).toBe(2);
+    expect(migrated.schemaVersion).toBe(SCHEMA_VERSION);
     expect(migrated.xp).toBe(0);
     expect(migrated.schedules[id]).toMatchObject({
       lapses: 2,
@@ -125,7 +125,7 @@ describe("versioned backups", () => {
       progress: old,
     };
     expect(importProgress(JSON.stringify(wrapped), now)).toMatchObject({
-      schemaVersion: 2,
+      schemaVersion: SCHEMA_VERSION,
       theme: "dark",
     });
   });

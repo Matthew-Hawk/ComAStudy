@@ -6,7 +6,7 @@ import { useStudy } from "../storage";
 import { buildDailyReview, buildChapterSession } from "../engine/session";
 import { currentStreak, localDay } from "../engine/rewards";
 import { domainMastery } from "../engine/mastery";
-import type { Domain } from "../content/schema";
+import type { DomainIndex as Domain } from "../content/index-types";
 export function useNow() {
   const [now, setNow] = useState(Date.now);
   useEffect(() => {

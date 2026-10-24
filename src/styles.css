@@ -237,7 +237,7 @@ dialog p {
   --bg: #f8f9f7;
   --surface: #fff;
   --text: #242d29;
-  --muted: #66716b;
+  --muted: #606b65;
   --border: #e2e7e2;
   --accent: #245d45;
   --accent-hover: #194a35;
@@ -645,6 +645,7 @@ main {
 }
 .secondary {
   background: var(--surface);
+  color: var(--text);
   border: 1px solid var(--border);
 }
 .secondary:hover {
@@ -1086,7 +1087,9 @@ main {
   border-radius: 6px;
   scroll-margin-top: 24px;
 }
-.prose h3 {
+.prose h2,
+.prose h3,
+.prose h4 {
   font-size: 17px;
   margin: 0 0 9px;
 }
@@ -1355,7 +1358,8 @@ select {
 .lesson-review .prose {
   font-size: 13px;
 }
-.lesson-review .prose h3 {
+.lesson-review .prose h3,
+.lesson-review .prose h4 {
   font-size: 14px;
 }
 .flashcard {
@@ -1670,6 +1674,8 @@ select {
   }
   .sidebar nav {
     display: flex;
+    flex-wrap: wrap;
+    min-width: 0;
     gap: 4px;
   }
   .sidebar nav a {
@@ -1956,5 +1962,366 @@ select {
   }
   .visual-toggle {
     display: none;
+  }
+}
+
+/* Phase 3: all interactive targets meet the requested 44px minimum. */
+.brand,
+.skip-link,
+.place-before,
+.exam-tabs button,
+.token > button:not(.drag-handle),
+.preference-card select {
+  min-width: 44px;
+  min-height: 44px;
+}
+button,
+select {
+  min-width: 44px;
+  min-height: 44px;
+}
+.sidebar-motto {
+  font-size: 21px !important;
+  line-height: 1.5 !important;
+  margin: 15px 0 9px !important;
+  color: var(--text) !important;
+  font-weight: 620;
+  letter-spacing: -0.5px;
+}
+.sidebar nav a,
+.icon-button,
+.visual-toggle,
+.order-list .icon-button,
+.drag-handle,
+.target-label,
+.back-link,
+.exam-review-list button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.primary,
+.secondary,
+.learning-dashboard .secondary {
+  min-height: 44px;
+}
+.answer-label input,
+.settings-grid select,
+.preference-card input[type="text"],
+dialog input:not([type="checkbox"]) {
+  font-size: 16px;
+  min-height: 44px;
+}
+.settings-grid {
+  display: grid;
+  gap: 18px;
+}
+.settings-grid label {
+  display: grid;
+  gap: 9px;
+  font-size: 13px;
+}
+.settings-grid .toggle-row {
+  display: flex;
+  margin-top: 0;
+}
+.settings-grid .toggle-row input,
+.exam-flag input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+dialog form label {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+dialog form input {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 12px;
+  background: var(--bg);
+  color: var(--text);
+}
+.exam-page,
+.exam-results {
+  max-width: 850px;
+  margin: auto;
+}
+.exam-page > h1,
+.exam-results > h1 {
+  margin: 18px 0;
+}
+.exam-question {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 25px;
+  margin: 25px 0;
+}
+.exam-question h2 {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+.exam-flag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  font-size: 13px;
+}
+.exam-timer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.exam-timer small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.exam-review-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+}
+.exam-review-list button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 7px;
+  padding: 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.score-summary {
+  font-size: 25px;
+  color: var(--accent);
+  font-weight: 650;
+  margin: 20px 0;
+}
+.exam-results > h2 {
+  margin: 30px 0 20px;
+}
+.domain-score {
+  display: grid;
+  gap: 9px;
+  margin: 18px 0;
+  font-size: 13px;
+}
+.domain-score progress {
+  width: 100%;
+  height: 12px;
+  accent-color: var(--accent);
+}
+.miss-list,
+.weakest-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.miss-list li,
+.weakest-list li {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 18px;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  font-size: 13px;
+}
+.weakest-list span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.weakest-list a,
+.mastery-details a,
+.inline-link,
+.stats-page > section > p > a,
+.narrow-page > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.stats-page > h1 {
+  margin: 14px 0;
+}
+.stats-page > section {
+  margin: 32px 0;
+}
+.stats-page section > h2 {
+  margin-bottom: 20px;
+}
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+.stats-overview > div {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 9px;
+  padding: 20px;
+}
+.stats-overview dt {
+  font-size: 12px;
+  color: var(--muted);
+}
+.stats-overview dd {
+  font-size: 25px;
+  margin: 10px 0 0;
+  font-weight: 650;
+}
+.mastery-details {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  padding: 16px;
+  margin: 12px 0;
+}
+.mastery-details summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.mastery-details summary > span {
+  font-size: 11px;
+  color: var(--muted);
+}
+.mastery-details li {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.chart-panel {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  margin: 24px 0;
+}
+.chart-panel > svg {
+  width: 100%;
+  height: auto;
+}
+.chart-panel summary {
+  cursor: pointer;
+  font-size: 13px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+}
+.table-scroll {
+  max-width: 100%;
+  overflow: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+  text-align: left;
+}
+caption {
+  font-weight: 650;
+  padding: 12px;
+}
+th,
+td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  line-height: 1.6;
+}
+.token-bank,
+.target-bank,
+.flow-layout > div,
+.activity-panel,
+.exam-page,
+.exam-results {
+  min-width: 0;
+}
+.exam-question button,
+.activity-panel button,
+.choice,
+.stats-page li {
+  overflow-wrap: anywhere;
+}
+.reward-feedback {
+  max-height: 40vh;
+  overflow: auto;
+}
+@media (max-width: 580px) {
+  .stats-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stats-overview dd {
+    font-size: 22px;
+  }
+  .exam-review-list {
+    grid-template-columns: 1fr;
+  }
+  .exam-question {
+    padding: 18px 15px;
+  }
+  .exam-question h2 {
+    font-size: 20px;
+  }
+  .stats-page li,
+  .mastery-details summary {
+    align-items: flex-start;
+  }
+  .chart-panel {
+    padding: 17px 12px;
+  }
+  .target-bank {
+    grid-template-columns: 1fr;
+  }
+  .order-list .token {
+    min-width: 80px;
+  }
+  .placement {
+    grid-template-columns: 1fr;
+  }
+  .sidebar nav a {
+    padding: 10px 8px;
+  }
+  .mastery-details ul {
+    padding-left: 0;
+  }
+}
+@media (forced-colors: active) {
+  button,
+  a,
+  input,
+  select,
+  summary {
+    forced-color-adjust: auto;
+  }
+  .mastery-ring {
+    border: 2px solid CanvasText;
+  }
+  .card-progress,
+  .flow-progress {
+    border: 1px solid CanvasText;
   }
 }
