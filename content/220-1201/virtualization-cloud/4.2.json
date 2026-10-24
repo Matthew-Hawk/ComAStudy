@@ -1,0 +1,83 @@
+{
+  "id": "220-1201-4.2",
+  "number": "4.2",
+  "title": "Cloud services & responsibility",
+  "summary": "Know what the provider manages and what you manage.",
+  "visual": "virtual-layers",
+  "lesson": {
+    "title": "Cloud services & responsibility",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "Cloud services offer computing resources through a service model. With infrastructure as a service, the customer commonly manages guest operating systems and applications on provider-managed infrastructure. Platform as a service supplies a managed application platform so developers focus on their code and data. Software as a service delivers an application for users to configure and use. Moving to a higher-level service changes responsibilities; it does not eliminate the customer’s responsibility for access and data."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "A public cloud offers provider-operated resources to many customers. A private cloud is dedicated to one organization, and a hybrid approach connects different environments. Elasticity means capacity can expand and contract with demand, while metered utilization measures resource consumption for management or billing. Shared physical infrastructure does not mean customers intentionally share permissions to each other’s data. Compare availability needs, data location, network connectivity, and ongoing charges before choosing a deployment. File synchronization is convenient, but deletions can synchronize too, so preserve recovery options."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A public cloud offers provider-operated resources to many customers. A private cloud is dedicated to one organization, and a hybrid approach connects different environments. Elasticity means capacity can expand and contract with demand, while metered utilization measures resource consumption for management or billing. Shared physical infrastructure does not mean customers intentionally share permissions to each other’s data. Compare availability needs, data location, network connectivity, and ongoing charges before choosing a deployment. File synchronization is convenient, but deletions can synchronize too, so preserve recovery options.",
+      "walkthrough": "Identify the request in the question. Cloud services offer computing resources through a service model. With infrastructure as a service, the customer commonly manages guest operating systems and applications on provider-managed infrastructure. Platform as a service supplies a managed application platform so developers focus on their code and data. Software as a service delivers an application for users to configure and use. Moving to a higher-level service changes responsibilities; it does not eliminate the customer’s responsibility for access and data. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-4.2-check",
+      "type": "multiple_choice",
+      "prompt": "Which service model delivers a ready-to-use hosted application?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "SaaS",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "IaaS",
+          "whyWrong": "IaaS supplies infrastructure resources; the customer still manages more of the software stack."
+        },
+        {
+          "id": "c",
+          "text": "A local hypervisor",
+          "whyWrong": "A local hypervisor hosts virtual machines rather than defining a hosted application service."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of resources stretching and shrinking. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of resources stretching and shrinking. The relevant term is elasticity. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1201-4.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "Cloud capacity that expands and contracts with demand demonstrates {{blank}}.",
+      "variants": [
+        "Automatically shrinking capacity after demand falls is an example of {{blank}}."
+      ],
+      "accepted": [
+        "elasticity"
+      ],
+      "hint": "Think of resources stretching and shrinking."
+    },
+    {
+      "explanation": "No. Customers still manage access, configuration, and appropriate handling of their data.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. No. Customers still manage access, configuration, and appropriate handling of their data. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-4.2-card",
+      "type": "flashcard",
+      "front": "Does a SaaS provider remove all customer security responsibilities?",
+      "back": "No. Customers still manage access, configuration, and appropriate handling of their data.",
+      "tags": [
+        "virtualization-cloud",
+        "4.2"
+      ]
+    }
+  ]
+}

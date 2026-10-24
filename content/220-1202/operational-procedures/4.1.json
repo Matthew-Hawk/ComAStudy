@@ -1,0 +1,83 @@
+{
+  "id": "220-1202-4.1",
+  "number": "4.1",
+  "title": "Leave a useful support trail",
+  "summary": "Write records that help the next technician.",
+  "visual": "support-cycle",
+  "lesson": {
+    "title": "Leave a useful support trail",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A support ticket is a working record of a problem, its impact, and the actions taken. Capture the affected user and device, the exact symptom, the start time, and the business effect. Severity describes impact rather than how strongly a user phrases the request. Use clear factual language and record observable results so another technician can continue without asking the user to repeat everything. Include only the information needed for the support task."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "Progress notes should connect an action to its result: what was checked, what changed, and what was observed afterward. A resolution note should explain the fix and how functionality was verified. Asset records connect equipment identifiers to ownership, warranty, licensing, and life-cycle information. A knowledge-base article turns a repeatable resolution into reusable guidance with scope and prerequisites. Avoid placing passwords, recovery codes, or unnecessary personal data into tickets. Follow organizational handling rules and escalate with enough context for the receiving team to act safely."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A support ticket is a working record of a problem, its impact, and the actions taken. Capture the affected user and device, the exact symptom, the start time, and the business effect. Severity describes impact rather than how strongly a user phrases the request. Use clear factual language and record observable results so another technician can continue without asking the user to repeat everything. Include only the information needed for the support task.",
+      "walkthrough": "Identify the request in the question. Progress notes should connect an action to its result: what was checked, what changed, and what was observed afterward. A resolution note should explain the fix and how functionality was verified. Asset records connect equipment identifiers to ownership, warranty, licensing, and life-cycle information. A knowledge-base article turns a repeatable resolution into reusable guidance with scope and prerequisites. Avoid placing passwords, recovery codes, or unnecessary personal data into tickets. Follow organizational handling rules and escalate with enough context for the receiving team to act safely. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1202-4.1-check",
+      "type": "multiple_choice",
+      "prompt": "Which ticket note is most useful to the next technician?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replaced the tested cable; link restored and file transfer verified",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Fixed it somehow",
+          "whyWrong": "A vague note lacks the action and verification needed to understand the repair."
+        },
+        {
+          "id": "c",
+          "text": "User was annoying",
+          "whyWrong": "Subjective criticism does not document a technical finding or resolution."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of a searchable collection of support articles. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of a searchable collection of support articles. The relevant term is base. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1202-4.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "A reusable troubleshooting article belongs in a knowledge {{blank}}.",
+      "variants": [
+        "Repeatable support guidance can be published in a knowledge {{blank}}."
+      ],
+      "accepted": [
+        "base"
+      ],
+      "hint": "Think of a searchable collection of support articles."
+    },
+    {
+      "explanation": "The action taken, the outcome observed, and the way the original functionality was verified.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. The action taken, the outcome observed, and the way the original functionality was verified. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1202-4.1-card",
+      "type": "flashcard",
+      "front": "What should a resolution note connect?",
+      "back": "The action taken, the outcome observed, and the way the original functionality was verified.",
+      "tags": [
+        "operational-procedures",
+        "4.1"
+      ]
+    }
+  ]
+}

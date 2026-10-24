@@ -1,0 +1,83 @@
+{
+  "id": "220-1202-1.2",
+  "number": "1.2",
+  "title": "Install with a recovery plan",
+  "summary": "Prepare, deploy, and verify an operating system.",
+  "visual": "support-cycle",
+  "lesson": {
+    "title": "Install with a recovery plan",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "An operating system installation can replace an existing environment or upgrade it in place. A clean install creates a fresh environment and may erase existing data, while an upgrade aims to retain supported applications and settings. Neither option removes the need for a verified backup. Check hardware requirements, driver availability, application compatibility, licensing, and the intended installation source before starting. A recovery plan must be usable even if the new operating system fails to boot."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "Boot media can be local, removable, or network-based. Match the firmware’s supported boot mode and partitioning requirements to the operating system; modern UEFI deployments commonly use GPT. An image deployment can standardize many machines, but the image still needs appropriate drivers, updates, and organization-specific configuration. After installation, validate network access, device functionality, updates, security configuration, and required applications. Confirm that the user can perform their actual work, then document the outcome and preserve the agreed recovery path until the change is accepted."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "Boot media can be local, removable, or network-based. Match the firmware’s supported boot mode and partitioning requirements to the operating system; modern UEFI deployments commonly use GPT. An image deployment can standardize many machines, but the image still needs appropriate drivers, updates, and organization-specific configuration. After installation, validate network access, device functionality, updates, security configuration, and required applications. Confirm that the user can perform their actual work, then document the outcome and preserve the agreed recovery path until the change is accepted.",
+      "walkthrough": "Identify the request in the question. An operating system installation can replace an existing environment or upgrade it in place. A clean install creates a fresh environment and may erase existing data, while an upgrade aims to retain supported applications and settings. Neither option removes the need for a verified backup. Check hardware requirements, driver availability, application compatibility, licensing, and the intended installation source before starting. A recovery plan must be usable even if the new operating system fails to boot. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-1.2-check",
+      "type": "multiple_choice",
+      "prompt": "What should happen before a clean OS installation that may erase data?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify a restorable backup",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Assume the installer preserves every file",
+          "whyWrong": "A clean installation can remove existing data and settings."
+        },
+        {
+          "id": "c",
+          "text": "Delete all recovery media",
+          "whyWrong": "Removing recovery media weakens the ability to recover from a failed installation."
+        }
+      ]
+    },
+    {
+      "explanation": "This is the newer alternative to MBR. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. This is the newer alternative to MBR. The relevant term is GPT. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1202-1.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "Modern UEFI deployments commonly use the {{blank}} partition table.",
+      "variants": [
+        "The GUID Partition Table is abbreviated {{blank}}."
+      ],
+      "accepted": [
+        "GPT"
+      ],
+      "hint": "This is the newer alternative to MBR."
+    },
+    {
+      "explanation": "A clean install creates a fresh environment; an upgrade attempts to retain supported applications and settings.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. A clean install creates a fresh environment; an upgrade attempts to retain supported applications and settings. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-1.2-card",
+      "type": "flashcard",
+      "front": "What is the difference between a clean install and an upgrade?",
+      "back": "A clean install creates a fresh environment; an upgrade attempts to retain supported applications and settings.",
+      "tags": [
+        "operating-systems",
+        "1.2"
+      ]
+    }
+  ]
+}

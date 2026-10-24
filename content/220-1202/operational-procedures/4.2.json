@@ -1,0 +1,83 @@
+{
+  "id": "220-1202-4.2",
+  "number": "4.2",
+  "title": "Make changes with confidence",
+  "summary": "Plan the change and the way back.",
+  "visual": "support-cycle",
+  "lesson": {
+    "title": "Make changes with confidence",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A change request explains what will change, why it is needed, which systems are affected, and who is responsible. Assess the risk, dependencies, expected disruption, and acceptance criteria before scheduling work. A maintenance window sets a planned time for implementation, while a change freeze restricts changes during a sensitive period. Follow the organization’s approval path; an urgent request still needs the appropriate emergency process rather than an undocumented shortcut."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "Test the proposed change in a suitable environment and prepare both a backup plan and a rollback plan. A backup preserves recoverable data, while a rollback plan defines the steps and conditions for returning to a previous state. Decide in advance when to stop an unsuccessful implementation so the recovery window remains usable. During execution, record actions and results, communicate status to affected people, and verify the agreed acceptance criteria. Close the change only after the required review and user acceptance, recording lessons that will make the next change safer."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "Test the proposed change in a suitable environment and prepare both a backup plan and a rollback plan. A backup preserves recoverable data, while a rollback plan defines the steps and conditions for returning to a previous state. Decide in advance when to stop an unsuccessful implementation so the recovery window remains usable. During execution, record actions and results, communicate status to affected people, and verify the agreed acceptance criteria. Close the change only after the required review and user acceptance, recording lessons that will make the next change safer.",
+      "walkthrough": "Identify the request in the question. Test the proposed change in a suitable environment and prepare both a backup plan and a rollback plan. A backup preserves recoverable data, while a rollback plan defines the steps and conditions for returning to a previous state. Decide in advance when to stop an unsuccessful implementation so the recovery window remains usable. During execution, record actions and results, communicate status to affected people, and verify the agreed acceptance criteria. Close the change only after the required review and user acceptance, recording lessons that will make the next change safer. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1202-4.2-check",
+      "type": "multiple_choice",
+      "prompt": "What specifically describes how to return to the previous working state?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "A rollback plan",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "A marketing announcement",
+          "whyWrong": "An announcement communicates information but does not provide recovery steps."
+        },
+        {
+          "id": "c",
+          "text": "An asset color label",
+          "whyWrong": "An asset label identifies equipment, not the procedure for reversing a change."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of an agreed span of time. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of an agreed span of time. The relevant term is window. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-4.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "A planned period for implementation is a maintenance {{blank}}.",
+      "variants": [
+        "Schedule disruptive work within an approved maintenance {{blank}}."
+      ],
+      "accepted": [
+        "window"
+      ],
+      "hint": "Think of an agreed span of time."
+    },
+    {
+      "explanation": "A backup preserves recoverable data; a rollback plan defines how and when to restore the previous working state.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. A backup preserves recoverable data; a rollback plan defines how and when to restore the previous working state. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1202-4.2-card",
+      "type": "flashcard",
+      "front": "How does a rollback plan differ from a backup?",
+      "back": "A backup preserves recoverable data; a rollback plan defines how and when to restore the previous working state.",
+      "tags": [
+        "operational-procedures",
+        "4.2"
+      ]
+    }
+  ]
+}

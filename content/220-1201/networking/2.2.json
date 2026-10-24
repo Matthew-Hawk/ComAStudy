@@ -1,0 +1,83 @@
+{
+  "id": "220-1201-2.2",
+  "number": "2.2",
+  "title": "Wireless without the guesswork",
+  "summary": "Make sense of bands, channels, and interference.",
+  "visual": "network-packet-hop",
+  "lesson": {
+    "title": "Wireless without the guesswork",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "Wireless clients share radio airtime. A strong signal does not guarantee a fast connection when neighboring devices compete on the same channel. The 2.4 GHz band generally reaches farther through obstacles than higher bands but is often crowded. The 5 GHz and 6 GHz bands offer additional channel space for compatible equipment. Available channels and power limits depend on the local regulatory region, so configure devices for their actual location."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "A channel occupies a slice of radio spectrum, and wider channels combine more spectrum to increase potential throughput. In a dense office, that wider footprint can overlap more neighbors and reduce effective performance. Use a wireless analyzer to inspect nearby activity, then compare measured performance before and after a change. Client support matters too: an older radio cannot gain a new band through an access-point setting alone. Bluetooth and NFC serve different short-range tasks rather than replacing a wireless LAN."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A channel occupies a slice of radio spectrum, and wider channels combine more spectrum to increase potential throughput. In a dense office, that wider footprint can overlap more neighbors and reduce effective performance. Use a wireless analyzer to inspect nearby activity, then compare measured performance before and after a change. Client support matters too: an older radio cannot gain a new band through an access-point setting alone. Bluetooth and NFC serve different short-range tasks rather than replacing a wireless LAN.",
+      "walkthrough": "Identify the request in the question. A channel occupies a slice of radio spectrum, and wider channels combine more spectrum to increase potential throughput. In a dense office, that wider footprint can overlap more neighbors and reduce effective performance. Use a wireless analyzer to inspect nearby activity, then compare measured performance before and after a change. Client support matters too: an older radio cannot gain a new band through an access-point setting alone. Bluetooth and NFC serve different short-range tasks rather than replacing a wireless LAN. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1201-2.2-check",
+      "type": "multiple_choice",
+      "prompt": "Why can a wider Wi-Fi channel perform poorly in a crowded office?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "It occupies more shared spectrum",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "It changes all clients to Ethernet",
+          "whyWrong": "Channel width does not turn wireless clients into wired clients."
+        },
+        {
+          "id": "c",
+          "text": "It disables the radio antenna",
+          "whyWrong": "The antenna still operates; competition and overlap can limit useful airtime."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of the band shared with many household devices. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of the band shared with many household devices. The relevant term is 2.4. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-2.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "The commonly congested lower Wi-Fi band is {{blank}} GHz.",
+      "variants": [
+        "Compared with 5 GHz, {{blank}} GHz generally offers better reach through obstacles."
+      ],
+      "accepted": [
+        "2.4"
+      ],
+      "hint": "Think of the band shared with many household devices."
+    },
+    {
+      "explanation": "No. Channel width must balance throughput potential with interference and available spectrum.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. No. Channel width must balance throughput potential with interference and available spectrum. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-2.2-card",
+      "type": "flashcard",
+      "front": "Should every office use the widest possible Wi-Fi channel?",
+      "back": "No. Channel width must balance throughput potential with interference and available spectrum.",
+      "tags": [
+        "networking",
+        "2.2"
+      ]
+    }
+  ]
+}

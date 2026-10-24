@@ -1,0 +1,84 @@
+{
+  "id": "220-1201-5.2",
+  "number": "5.2",
+  "title": "Drive trouble & RAID recovery",
+  "summary": "Protect data before pursuing a repair.",
+  "visual": "raid-mirror",
+  "lesson": {
+    "title": "Drive trouble & RAID recovery",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "Storage faults can appear as slow reads, missing volumes, unusual noises, or health warnings. A clicking mechanical drive may be failing, and repeated scans can increase stress on fragile hardware. Determine the value of the data and whether a verified backup exists before running repair tools. A missing drive may instead have a disconnected cable or a controller issue, so gather evidence without making unnecessary writes."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "RAID 1 mirrors data across drives, allowing an array to keep operating through some single-drive failures. RAID 0 stripes data for performance and provides no redundancy. Neither arrangement protects against every cause of data loss: accidental deletion, corruption, theft, and malware can affect the array. When an array reports a failed member, identify the exact drive through the controller’s information and the vendor procedure before replacing anything. Rebuilding can stress remaining drives, and pulling a healthy member from a degraded array can destroy availability. Verify backups and escalate uncertain recovery situations."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "RAID 1 mirrors data across drives, allowing an array to keep operating through some single-drive failures. RAID 0 stripes data for performance and provides no redundancy. Neither arrangement protects against every cause of data loss: accidental deletion, corruption, theft, and malware can affect the array. When an array reports a failed member, identify the exact drive through the controller’s information and the vendor procedure before replacing anything. Rebuilding can stress remaining drives, and pulling a healthy member from a degraded array can destroy availability. Verify backups and escalate uncertain recovery situations.",
+      "walkthrough": "Identify the request in the question. RAID 1 mirrors data across drives, allowing an array to keep operating through some single-drive failures. RAID 0 stripes data for performance and provides no redundancy. Neither arrangement protects against every cause of data loss: accidental deletion, corruption, theft, and malware can affect the array. When an array reports a failed member, identify the exact drive through the controller’s information and the vendor procedure before replacing anything. Rebuilding can stress remaining drives, and pulling a healthy member from a degraded array can destroy availability. Verify backups and escalate uncertain recovery situations. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1201-5.2-check",
+      "type": "multiple_choice",
+      "prompt": "Which RAID level mirrors data for redundancy?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "RAID 1",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "RAID 0",
+          "whyWrong": "RAID 0 distributes data across drives but does not keep a redundant mirror."
+        },
+        {
+          "id": "c",
+          "text": "A single unprotected disk",
+          "whyWrong": "One unprotected disk has no second copy available after that disk fails."
+        }
+      ]
+    },
+    {
+      "explanation": "Separate the stripe-only arrangement from the mirrored arrangement. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Separate the stripe-only arrangement from the mirrored arrangement. The relevant term is 0. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1201-5.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "RAID {{blank}} uses striping without redundancy.",
+      "variants": [
+        "An array with no fault tolerance that stripes data is RAID {{blank}}."
+      ],
+      "accepted": [
+        "0",
+        "zero"
+      ],
+      "hint": "Separate the stripe-only arrangement from the mirrored arrangement."
+    },
+    {
+      "explanation": "An array can still lose data through deletion, corruption, malware, or loss of the entire system.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. An array can still lose data through deletion, corruption, malware, or loss of the entire system. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-5.2-card",
+      "type": "flashcard",
+      "front": "Why is RAID not a substitute for backups?",
+      "back": "An array can still lose data through deletion, corruption, malware, or loss of the entire system.",
+      "tags": [
+        "hardware-troubleshooting",
+        "5.2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "220-1201-3.2",
+  "number": "3.2",
+  "title": "Cables that fit the job",
+  "summary": "Identify connections by purpose and capability.",
+  "visual": "connector-sheet",
+  "lesson": {
+    "title": "Cables that fit the job",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "Choose a cable by the signal and environment it must support, then confirm the connector. Twisted-pair Ethernet commonly uses an eight-position modular connector often called RJ45. Optical fiber carries light and uses connectors such as LC or SC. Fiber avoids electrical interference along the cable and can suit longer links, but the transceivers, fiber type, and connector must match. A connector that physically fits does not prove end-to-end compatibility."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "HDMI and DisplayPort commonly carry digital display signals. VGA carries analog video and does not become digital just because a passive connector adapter changes the plug shape. SATA is used for internal storage data connections, with power supplied separately. USB-C can support several functions, but only those implemented by the devices and cable. In installation spaces, cable jacket ratings also matter: use the appropriate rated cable for the building environment and follow applicable installation requirements rather than choosing purely by color or price."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "HDMI and DisplayPort commonly carry digital display signals. VGA carries analog video and does not become digital just because a passive connector adapter changes the plug shape. SATA is used for internal storage data connections, with power supplied separately. USB-C can support several functions, but only those implemented by the devices and cable. In installation spaces, cable jacket ratings also matter: use the appropriate rated cable for the building environment and follow applicable installation requirements rather than choosing purely by color or price.",
+      "walkthrough": "Identify the request in the question. Choose a cable by the signal and environment it must support, then confirm the connector. Twisted-pair Ethernet commonly uses an eight-position modular connector often called RJ45. Optical fiber carries light and uses connectors such as LC or SC. Fiber avoids electrical interference along the cable and can suit longer links, but the transceivers, fiber type, and connector must match. A connector that physically fits does not prove end-to-end compatibility. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-3.2-check",
+      "type": "multiple_choice",
+      "prompt": "Which medium carries data as light rather than electrical signals?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Optical fiber",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Twisted-pair copper",
+          "whyWrong": "Twisted-pair copper carries electrical signals and can be affected by electrical interference."
+        },
+        {
+          "id": "c",
+          "text": "Coaxial copper",
+          "whyWrong": "Coaxial cable also carries electrical signals through a conductor."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of a digital video connection, rather than a storage connection. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of a digital video connection, rather than a storage connection. The relevant term is HDMI. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1201-3.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "A common digital display connector is {{blank}}.",
+      "variants": [
+        "A television’s digital video input is often labeled {{blank}}."
+      ],
+      "accepted": [
+        "HDMI",
+        "DisplayPort"
+      ],
+      "hint": "Think of a digital video connection, rather than a storage connection."
+    },
+    {
+      "explanation": "No. Check the cable’s signaling capabilities and ratings as well as its physical shape.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. No. Check the cable’s signaling capabilities and ratings as well as its physical shape. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-3.2-card",
+      "type": "flashcard",
+      "front": "Does a matching connector prove that a cable supports every port feature?",
+      "back": "No. Check the cable’s signaling capabilities and ratings as well as its physical shape.",
+      "tags": [
+        "hardware",
+        "3.2"
+      ]
+    }
+  ]
+}

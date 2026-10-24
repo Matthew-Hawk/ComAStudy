@@ -1,0 +1,9 @@
+{
+  "id": "hardware-troubleshooting",
+  "exam": "220-1201",
+  "number": 5,
+  "title": "Hardware and Network Troubleshooting",
+  "description": "Turn symptoms into evidence and a reliable resolution.",
+  "weight": 28,
+  "objectiveCount": 6
+}

@@ -1,0 +1,83 @@
+{
+  "id": "220-1202-3.1",
+  "number": "3.1",
+  "title": "Diagnose Windows issues",
+  "summary": "Use evidence before changing a working system.",
+  "visual": "support-cycle",
+  "lesson": {
+    "title": "Diagnose Windows issues",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "Slow performance and crashes describe symptoms rather than causes. First establish what changed, which users are affected, when the issue began, and whether it can be reproduced. Task Manager can reveal resource pressure and a process consuming CPU, memory, or disk activity. Event logs can provide timestamps and error context. Correlate those observations with the reported problem instead of treating every warning in a log as the cause."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "A startup issue may involve firmware boot selection, storage access, system files, or a recent driver change. Record the exact error and use the least disruptive suitable diagnostic path. A recent update is a useful clue, not proof of causation. Before rollback or repair, consider the user’s data, recovery keys, backup status, and authorization. Test one change at a time so the result remains interpretable. After an apparent fix, repeat the original task and check related functionality; a computer merely reaching the desktop does not prove the user’s issue is resolved."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "Slow performance and crashes describe symptoms rather than causes. First establish what changed, which users are affected, when the issue began, and whether it can be reproduced. Task Manager can reveal resource pressure and a process consuming CPU, memory, or disk activity. Event logs can provide timestamps and error context. Correlate those observations with the reported problem instead of treating every warning in a log as the cause.",
+      "walkthrough": "Identify the request in the question. Slow performance and crashes describe symptoms rather than causes. First establish what changed, which users are affected, when the issue began, and whether it can be reproduced. Task Manager can reveal resource pressure and a process consuming CPU, memory, or disk activity. Event logs can provide timestamps and error context. Correlate those observations with the reported problem instead of treating every warning in a log as the cause. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-3.1-check",
+      "type": "multiple_choice",
+      "prompt": "What is a useful first step when a user reports a newly slow PC?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gather the timeline and inspect resource use",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Reinstall immediately without a backup",
+          "whyWrong": "Immediate reinstallation is disruptive and can lose data without establishing the cause."
+        },
+        {
+          "id": "c",
+          "text": "Delete every warning in the logs",
+          "whyWrong": "Deleting log entries removes evidence and does not repair the source of a warning."
+        }
+      ]
+    },
+    {
+      "explanation": "This utility shows processes and performance. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. This utility shows processes and performance. The relevant term is Task Manager. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-3.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "The Windows utility for examining active process resource use is {{blank}}.",
+      "variants": [
+        "To inspect a process consuming CPU, open {{blank}}."
+      ],
+      "accepted": [
+        "Task Manager"
+      ],
+      "hint": "This utility shows processes and performance."
+    },
+    {
+      "explanation": "It makes the effect of each change interpretable and helps identify the actual cause.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. It makes the effect of each change interpretable and helps identify the actual cause. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1202-3.1-card",
+      "type": "flashcard",
+      "front": "Why change one variable at a time during diagnosis?",
+      "back": "It makes the effect of each change interpretable and helps identify the actual cause.",
+      "tags": [
+        "software-troubleshooting",
+        "3.1"
+      ]
+    }
+  ]
+}

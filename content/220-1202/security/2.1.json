@@ -1,0 +1,118 @@
+{
+  "id": "220-1202-2.1",
+  "number": "2.1",
+  "title": "Security in layers",
+  "summary": "Protect people, devices, and access.",
+  "visual": "support-cycle",
+  "lesson": {
+    "title": "Security in layers",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "Security controls reduce risk at different boundaries. A locked equipment room limits physical access, while an account permission limits what a signed-in user can do. Cameras can help detect and investigate events but do not physically prevent entry by themselves. Layered protection combines preventive, detective, and corrective measures so one control’s failure does not remove every defense. Choose controls that address an actual threat rather than adding complexity without a purpose."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "The principle of least privilege grants only the access needed for a task. Multifactor authentication combines different factor types, such as something known and something possessed; two passwords are still the same factor type. Single sign-on reduces repeated sign-ins across applications but needs careful account protection. Just-in-time privileged access limits how long elevated permissions remain available. Zero Trust evaluates access explicitly instead of treating a network location as proof of trust. Review access when roles change, remove unused permissions, and retain useful records for investigation."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "Security controls reduce risk at different boundaries. A locked equipment room limits physical access, while an account permission limits what a signed-in user can do. Cameras can help detect and investigate events but do not physically prevent entry by themselves. Layered protection combines preventive, detective, and corrective measures so one control’s failure does not remove every defense. Choose controls that address an actual threat rather than adding complexity without a purpose.",
+      "walkthrough": "Identify the request in the question. The principle of least privilege grants only the access needed for a task. Multifactor authentication combines different factor types, such as something known and something possessed; two passwords are still the same factor type. Single sign-on reduces repeated sign-ins across applications but needs careful account protection. Just-in-time privileged access limits how long elevated permissions remain available. Zero Trust evaluates access explicitly instead of treating a network location as proof of trust. Review access when roles change, remove unused permissions, and retain useful records for investigation. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1202-2.1-check",
+      "type": "multiple_choice",
+      "prompt": "Which combination uses two different authentication factor types?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "A password and a hardware security key",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Two different passwords",
+          "whyWrong": "Two passwords are both knowledge factors, so they do not create two factor types."
+        },
+        {
+          "id": "c",
+          "text": "A password and a memorized PIN",
+          "whyWrong": "A password and a memorized PIN are both things the user knows."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of limiting the rights an account receives. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of limiting the rights an account receives. The relevant term is privilege. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1202-2.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "Granting only the access needed follows the principle of least {{blank}}.",
+      "variants": [
+        "Avoiding unnecessary administrative rights is least {{blank}} in practice."
+      ],
+      "accepted": [
+        "privilege"
+      ],
+      "hint": "Think of limiting the rights an account receives."
+    },
+    {
+      "explanation": "No. Access should still be verified and limited to the required resources.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. No. Access should still be verified and limited to the required resources. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1202-2.1-card",
+      "type": "flashcard",
+      "front": "Does being on an internal network automatically prove trust?",
+      "back": "No. Access should still be verified and limited to the required resources.",
+      "tags": [
+        "security",
+        "2.1"
+      ]
+    },
+    {
+      "id": "security-factor-sort",
+      "type": "drag_sort",
+      "prompt": "Place each authentication example into its factor type.",
+      "categories": [
+        {
+          "id": "know",
+          "label": "Something you know"
+        },
+        {
+          "id": "have",
+          "label": "Something you have"
+        }
+      ],
+      "items": [
+        {
+          "id": "password",
+          "text": "Password",
+          "category": "know"
+        },
+        {
+          "id": "pin",
+          "text": "Memorized PIN",
+          "category": "know"
+        },
+        {
+          "id": "key",
+          "text": "Hardware security key",
+          "category": "have"
+        }
+      ],
+      "explanation": "Authentication factors describe the kind of evidence presented. Two knowledge secrets do not become two factor types.",
+      "walkthrough": "A password and memorized PIN depend on knowledge. A physical security key depends on possession. Sort by the type of evidence rather than how many credentials are presented.",
+      "lessonAnchor": "application"
+    }
+  ]
+}

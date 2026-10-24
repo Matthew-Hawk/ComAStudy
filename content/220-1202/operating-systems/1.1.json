@@ -1,0 +1,83 @@
+{
+  "id": "220-1202-1.1",
+  "number": "1.1",
+  "title": "Operating systems & filesystems",
+  "summary": "Match the platform to the workload.",
+  "visual": "virtual-layers",
+  "lesson": {
+    "title": "Operating systems & filesystems",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "An operating system manages hardware resources and provides services to applications. Desktop platforms such as Windows, Linux, and macOS differ in supported applications, management tools, and hardware compatibility. Mobile platforms emphasize touch input, battery management, and controlled application permissions. Choosing a platform starts with the required applications, supported hardware, organizational policies, and the vendor’s supported life cycle rather than personal familiarity alone."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "A filesystem organizes stored data and defines features such as permissions, journaling, and size limits. NTFS is common for Windows system volumes and supports access permissions. APFS is associated with modern Apple systems, and ext4 is common on Linux. exFAT can be useful for removable media shared between platforms, while FAT32 has a roughly four-gigabyte single-file limit. A device recognizing a physical disk does not guarantee that it can read every filesystem on that disk. Before formatting, preserve needed data and verify the intended systems can read the chosen format."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "An operating system manages hardware resources and provides services to applications. Desktop platforms such as Windows, Linux, and macOS differ in supported applications, management tools, and hardware compatibility. Mobile platforms emphasize touch input, battery management, and controlled application permissions. Choosing a platform starts with the required applications, supported hardware, organizational policies, and the vendor’s supported life cycle rather than personal familiarity alone.",
+      "walkthrough": "Identify the request in the question. A filesystem organizes stored data and defines features such as permissions, journaling, and size limits. NTFS is common for Windows system volumes and supports access permissions. APFS is associated with modern Apple systems, and ext4 is common on Linux. exFAT can be useful for removable media shared between platforms, while FAT32 has a roughly four-gigabyte single-file limit. A device recognizing a physical disk does not guarantee that it can read every filesystem on that disk. Before formatting, preserve needed data and verify the intended systems can read the chosen format. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1202-1.1-check",
+      "type": "multiple_choice",
+      "prompt": "Which filesystem is a common choice for a Windows system volume with access permissions?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "NTFS",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "FAT32 because it has no limits",
+          "whyWrong": "FAT32 has meaningful limits and does not supply NTFS-style access permissions."
+        },
+        {
+          "id": "c",
+          "text": "An HDMI connector",
+          "whyWrong": "HDMI is a display interface, not a filesystem."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of the extended filesystem family. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of the extended filesystem family. The relevant term is ext4. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1202-1.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "A common Linux filesystem is {{blank}}.",
+      "variants": [
+        "Many Linux installations use the fourth extended filesystem, abbreviated {{blank}}."
+      ],
+      "accepted": [
+        "ext4"
+      ],
+      "hint": "Think of the extended filesystem family."
+    },
+    {
+      "explanation": "Unsupported systems may stop receiving security updates and lose application compatibility.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. Unsupported systems may stop receiving security updates and lose application compatibility. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-1.1-card",
+      "type": "flashcard",
+      "front": "Why check OS life-cycle support before deployment?",
+      "back": "Unsupported systems may stop receiving security updates and lose application compatibility.",
+      "tags": [
+        "operating-systems",
+        "1.1"
+      ]
+    }
+  ]
+}

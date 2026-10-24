@@ -1,0 +1,83 @@
+{
+  "id": "220-1202-3.2",
+  "number": "3.2",
+  "title": "Recover mobile applications",
+  "summary": "Troubleshoot crashes, updates, and connectivity.",
+  "visual": "support-cycle",
+  "lesson": {
+    "title": "Recover mobile applications",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A mobile application that crashes or refuses to update can have several causes: insufficient storage, an unsupported operating system, a damaged local cache, or a connectivity problem. Record the application version, operating system version, error message, and recent changes. Check whether one application is affected or whether many applications show the same symptom. That distinction helps separate an application-specific fault from a wider device or network condition."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "Start with low-impact checks such as available space, network access, and a supported application restart. Check for compatible updates through the approved source. Clearing cached temporary data is different from clearing all application data; the latter can remove local files, sessions, or settings. Before reinstalling or resetting, verify synchronization, backups, and any account recovery requirements. For battery drain, inspect usage by application and recent activity rather than assuming the battery hardware is faulty. After the change, repeat the affected workflow and confirm that important local content remains available."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "Start with low-impact checks such as available space, network access, and a supported application restart. Check for compatible updates through the approved source. Clearing cached temporary data is different from clearing all application data; the latter can remove local files, sessions, or settings. Before reinstalling or resetting, verify synchronization, backups, and any account recovery requirements. For battery drain, inspect usage by application and recent activity rather than assuming the battery hardware is faulty. After the change, repeat the affected workflow and confirm that important local content remains available.",
+      "walkthrough": "Identify the request in the question. Start with low-impact checks such as available space, network access, and a supported application restart. Check for compatible updates through the approved source. Clearing cached temporary data is different from clearing all application data; the latter can remove local files, sessions, or settings. Before reinstalling or resetting, verify synchronization, backups, and any account recovery requirements. For battery drain, inspect usage by application and recent activity rather than assuming the battery hardware is faulty. After the change, repeat the affected workflow and confirm that important local content remains available. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1202-3.2-check",
+      "type": "multiple_choice",
+      "prompt": "Before clearing an application’s stored data, what should a technician verify?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether local content is backed up or synchronized",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "That all user files are disposable",
+          "whyWrong": "Application data can include valuable unsynchronized local content."
+        },
+        {
+          "id": "c",
+          "text": "That the display brightness is maximum",
+          "whyWrong": "Display brightness does not protect application data from removal."
+        }
+      ]
+    },
+    {
+      "explanation": "Distinguish temporary storage from all application data. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Distinguish temporary storage from all application data. The relevant term is cache. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1202-3.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "Temporary application files are often stored in a {{blank}}.",
+      "variants": [
+        "Clearing an app’s {{blank}} removes temporary files rather than intentionally resetting all user data."
+      ],
+      "accepted": [
+        "cache"
+      ],
+      "hint": "Distinguish temporary storage from all application data."
+    },
+    {
+      "explanation": "It helps distinguish an application-specific fault from a device-wide or network-wide issue.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. It helps distinguish an application-specific fault from a device-wide or network-wide issue. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-3.2-card",
+      "type": "flashcard",
+      "front": "Why compare one failing app with other apps?",
+      "back": "It helps distinguish an application-specific fault from a device-wide or network-wide issue.",
+      "tags": [
+        "software-troubleshooting",
+        "3.2"
+      ]
+    }
+  ]
+}

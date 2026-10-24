@@ -1,0 +1,83 @@
+{
+  "id": "220-1202-2.2",
+  "number": "2.2",
+  "title": "Everyday Windows protection",
+  "summary": "Use accounts, encryption, and permissions deliberately.",
+  "visual": "support-cycle",
+  "lesson": {
+    "title": "Everyday Windows protection",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A standard account reduces the impact of everyday mistakes and malicious programs by limiting administrative actions. Use an elevated context only when a task requires it. User Account Control provides an elevation boundary and a prompt for approval or credentials; approving an unfamiliar prompt without checking its origin defeats the intended protection. Local accounts and organization-managed identities have different administration paths, so verify which identity is actually being used."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "A firewall controls traffic according to rules, while antivirus tools look for malicious behavior or known threats. Disabling either control broadly to solve a connection problem creates unnecessary exposure; investigate the specific application and rule instead. BitLocker protects data on an encrypted volume, but access to a running, unlocked system still matters. Store recovery information through the approved process before making changes that could affect boot or encryption. For shared files, effective access depends on both share permissions and filesystem permissions, so test using the intended user account."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A firewall controls traffic according to rules, while antivirus tools look for malicious behavior or known threats. Disabling either control broadly to solve a connection problem creates unnecessary exposure; investigate the specific application and rule instead. BitLocker protects data on an encrypted volume, but access to a running, unlocked system still matters. Store recovery information through the approved process before making changes that could affect boot or encryption. For shared files, effective access depends on both share permissions and filesystem permissions, so test using the intended user account.",
+      "walkthrough": "Identify the request in the question. A standard account reduces the impact of everyday mistakes and malicious programs by limiting administrative actions. Use an elevated context only when a task requires it. User Account Control provides an elevation boundary and a prompt for approval or credentials; approving an unfamiliar prompt without checking its origin defeats the intended protection. Local accounts and organization-managed identities have different administration paths, so verify which identity is actually being used. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1202-2.2-check",
+      "type": "multiple_choice",
+      "prompt": "Which account type is generally appropriate for everyday work?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "A standard user account",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "A permanently elevated administrator",
+          "whyWrong": "Permanent elevation gives routine applications more power than they need."
+        },
+        {
+          "id": "c",
+          "text": "An unknown shared administrator account",
+          "whyWrong": "Shared administrative identities reduce accountability and grant excessive routine access."
+        }
+      ]
+    },
+    {
+      "explanation": "This protects a volume at rest rather than filtering network packets. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. This protects a volume at rest rather than filtering network packets. The relevant term is BitLocker. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1202-2.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "Windows volume encryption is commonly provided by {{blank}}.",
+      "variants": [
+        "The Windows feature that encrypts an entire volume is {{blank}}."
+      ],
+      "accepted": [
+        "BitLocker"
+      ],
+      "hint": "This protects a volume at rest rather than filtering network packets."
+    },
+    {
+      "explanation": "A change can trigger recovery, and missing recovery information can prevent access to the data.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. A change can trigger recovery, and missing recovery information can prevent access to the data. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1202-2.2-card",
+      "type": "flashcard",
+      "front": "Why preserve encryption recovery information before firmware changes?",
+      "back": "A change can trigger recovery, and missing recovery information can prevent access to the data.",
+      "tags": [
+        "security",
+        "2.2"
+      ]
+    }
+  ]
+}

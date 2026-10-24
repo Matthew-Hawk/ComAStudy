@@ -1,0 +1,9 @@
+{
+  "id": "networking",
+  "exam": "220-1201",
+  "number": 2,
+  "title": "Networking",
+  "description": "Build a clear picture of how devices communicate.",
+  "weight": 23,
+  "objectiveCount": 8
+}

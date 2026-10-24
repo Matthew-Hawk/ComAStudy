@@ -1,0 +1,9 @@
+{
+  "id": "operating-systems",
+  "exam": "220-1202",
+  "number": 1,
+  "title": "Operating Systems",
+  "description": "Install, maintain, and work across everyday platforms.",
+  "weight": 28,
+  "objectiveCount": 11
+}

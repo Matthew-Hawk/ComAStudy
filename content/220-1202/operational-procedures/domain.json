@@ -1,0 +1,9 @@
+{
+  "id": "operational-procedures",
+  "exam": "220-1202",
+  "number": 4,
+  "title": "Operational Procedures",
+  "description": "Bring good judgment and clear process to technical work.",
+  "weight": 21,
+  "objectiveCount": 10
+}

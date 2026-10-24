@@ -1,0 +1,85 @@
+{
+  "id": "220-1201-5.1",
+  "number": "5.1",
+  "title": "When hardware misbehaves",
+  "summary": "Connect power, memory, and thermal symptoms.",
+  "visual": "memory-board",
+  "lesson": {
+    "title": "When hardware misbehaves",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A computer that shuts down under load may be protecting itself from excessive temperature, but the symptom alone does not identify the faulty part. Record when the shutdown happens and inspect safe, observable evidence such as fan operation, airflow, and reported temperatures. A machine with no power needs a different starting point: verify the outlet, external cable, power switch, and appropriate supply connections before blaming the operating system."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "POST signals can narrow a startup failure, but their meaning depends on the manufacturer and model. Look up the documented code rather than assuming every beep pattern is universal. Intermittent crashes can involve memory, power, heat, drivers, or applications, so change one variable at a time and test the result. If there is smoke or a burning smell, stop testing and follow electrical safety procedures. Never open a power supply to investigate its internals; hazardous stored energy can remain after unplugging it."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A computer that shuts down under load may be protecting itself from excessive temperature, but the symptom alone does not identify the faulty part. Record when the shutdown happens and inspect safe, observable evidence such as fan operation, airflow, and reported temperatures. A machine with no power needs a different starting point: verify the outlet, external cable, power switch, and appropriate supply connections before blaming the operating system.",
+      "walkthrough": "Identify the request in the question. POST signals can narrow a startup failure, but their meaning depends on the manufacturer and model. Look up the documented code rather than assuming every beep pattern is universal. Intermittent crashes can involve memory, power, heat, drivers, or applications, so change one variable at a time and test the result. If there is smoke or a burning smell, stop testing and follow electrical safety procedures. Never open a power supply to investigate its internals; hazardous stored energy can remain after unplugging it. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1201-5.1-check",
+      "type": "multiple_choice",
+      "prompt": "A desktop emits a burning smell. What is the appropriate immediate response?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop testing and follow electrical safety procedures",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Keep benchmarking to collect more data",
+          "whyWrong": "Continuing a load test can worsen an electrical or thermal hazard."
+        },
+        {
+          "id": "c",
+          "text": "Open the power supply immediately",
+          "whyWrong": "Power supplies may retain hazardous energy and are not field-repair items for this task."
+        }
+      ]
+    },
+    {
+      "explanation": "The acronym describes the self-test at power-on. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. The acronym describes the self-test at power-on. The relevant term is POST. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1201-5.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "Startup hardware checks are commonly called {{blank}}.",
+      "variants": [
+        "A manufacturer’s beep code can report a failure during {{blank}}."
+      ],
+      "accepted": [
+        "POST",
+        "power-on self-test",
+        "power on self test"
+      ],
+      "hint": "The acronym describes the self-test at power-on."
+    },
+    {
+      "explanation": "No. Interpret them using documentation for the exact system or firmware vendor.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. No. Interpret them using documentation for the exact system or firmware vendor. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-5.1-card",
+      "type": "flashcard",
+      "front": "Are POST beep codes universal?",
+      "back": "No. Interpret them using documentation for the exact system or firmware vendor.",
+      "tags": [
+        "hardware-troubleshooting",
+        "5.1"
+      ]
+    }
+  ]
+}

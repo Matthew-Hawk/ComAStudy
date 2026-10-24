@@ -1,0 +1,9 @@
+{
+  "id": "security",
+  "exam": "220-1202",
+  "number": 2,
+  "title": "Security",
+  "description": "Protect devices, information, and the people using them.",
+  "weight": 28,
+  "objectiveCount": 11
+}

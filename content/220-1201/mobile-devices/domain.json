@@ -1,0 +1,9 @@
+{
+  "id": "mobile-devices",
+  "exam": "220-1201",
+  "number": 1,
+  "title": "Mobile Devices",
+  "description": "Portable hardware, practical connections, and device support.",
+  "weight": 13,
+  "objectiveCount": 3
+}

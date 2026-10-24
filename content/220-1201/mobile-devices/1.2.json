@@ -1,0 +1,83 @@
+{
+  "id": "220-1201-1.2",
+  "number": "1.2",
+  "title": "Connections on the go",
+  "summary": "Choose the right connection for the task.",
+  "visual": "connector-sheet",
+  "lesson": {
+    "title": "Connections on the go",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A connector’s shape is only one part of a connection. USB-C describes a reversible physical connector; the device, port, and cable still determine supported data speed, charging, and video features. A cable that charges a laptop may not support an external display. Read the specifications at both ends and check the cable rating before promising that one lead will handle everything on a desk."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "Bluetooth is useful for nearby peripherals such as headsets and keyboards. Pairing establishes a trusted relationship between devices, while NFC typically exchanges small amounts of information at very short range. A mobile hotspot shares an upstream cellular connection with other devices and can consume a data allowance quickly. Docks consolidate desk connections, but features depend on the host interface and dock capabilities. Test video, networking, charging, and peripherals separately when investigating a dock issue."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "Bluetooth is useful for nearby peripherals such as headsets and keyboards. Pairing establishes a trusted relationship between devices, while NFC typically exchanges small amounts of information at very short range. A mobile hotspot shares an upstream cellular connection with other devices and can consume a data allowance quickly. Docks consolidate desk connections, but features depend on the host interface and dock capabilities. Test video, networking, charging, and peripherals separately when investigating a dock issue.",
+      "walkthrough": "Identify the request in the question. A connector’s shape is only one part of a connection. USB-C describes a reversible physical connector; the device, port, and cable still determine supported data speed, charging, and video features. A cable that charges a laptop may not support an external display. Read the specifications at both ends and check the cable rating before promising that one lead will handle everything on a desk. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-1.2-check",
+      "type": "multiple_choice",
+      "prompt": "Does a USB-C connector guarantee that a port supports video output?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "No; verify port and cable capabilities",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Yes; every USB-C port carries video",
+          "whyWrong": "Connector shape does not specify every supported protocol or alternate mode."
+        },
+        {
+          "id": "c",
+          "text": "Only when Bluetooth is enabled",
+          "whyWrong": "Bluetooth pairing does not enable video features on a wired port."
+        }
+      ]
+    },
+    {
+      "explanation": "Think of the radio used for personal peripherals. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Think of the radio used for personal peripherals. The relevant term is Bluetooth. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "application",
+      "id": "220-1201-1.2-recall",
+      "type": "fill_in_blank",
+      "prompt": "A short-range wireless headset commonly connects using {{blank}}.",
+      "variants": [
+        "Pairing a nearby wireless keyboard usually establishes a {{blank}} connection."
+      ],
+      "accepted": [
+        "Bluetooth"
+      ],
+      "hint": "Think of the radio used for personal peripherals."
+    },
+    {
+      "explanation": "A device sharing its internet connection, often cellular, with nearby client devices.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. A device sharing its internet connection, often cellular, with nearby client devices. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-1.2-card",
+      "type": "flashcard",
+      "front": "What is a mobile hotspot?",
+      "back": "A device sharing its internet connection, often cellular, with nearby client devices.",
+      "tags": [
+        "mobile-devices",
+        "1.2"
+      ]
+    }
+  ]
+}

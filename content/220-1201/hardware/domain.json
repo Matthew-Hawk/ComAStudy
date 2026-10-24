@@ -1,0 +1,9 @@
+{
+  "id": "hardware",
+  "exam": "220-1201",
+  "number": 3,
+  "title": "Hardware",
+  "description": "Get to know the components behind every workstation.",
+  "weight": 25,
+  "objectiveCount": 8
+}

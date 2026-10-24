@@ -1,0 +1,110 @@
+{
+  "id": "220-1201-4.1",
+  "number": "4.1",
+  "title": "A computer within a computer",
+  "summary": "Understand hosts, guests, and hypervisors.",
+  "visual": "virtual-layers",
+  "lesson": {
+    "title": "A computer within a computer",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A virtual machine presents virtual hardware to a guest operating system. The physical host supplies CPU time, RAM, storage, and networking through a hypervisor. A type 1 hypervisor runs directly on hardware, while a type 2 hypervisor runs on a host operating system. Both approaches need enough physical resources for their workloads; assigning more virtual memory than a host can support does not create real memory."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "Virtual machines are useful for isolated test environments, legacy applications, and running different operating systems on one machine. Isolation is a design boundary, not a promise of perfect security. Patch guests and hypervisors, control shared folders, and choose network access deliberately. A snapshot captures a point-in-time state useful for rollback but is not an independent backup strategy. Containers typically share a host kernel instead of providing each workload a full guest kernel, so application packaging and virtual machines solve related but different problems."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A virtual machine presents virtual hardware to a guest operating system. The physical host supplies CPU time, RAM, storage, and networking through a hypervisor. A type 1 hypervisor runs directly on hardware, while a type 2 hypervisor runs on a host operating system. Both approaches need enough physical resources for their workloads; assigning more virtual memory than a host can support does not create real memory.",
+      "walkthrough": "Identify the request in the question. A virtual machine presents virtual hardware to a guest operating system. The physical host supplies CPU time, RAM, storage, and networking through a hypervisor. A type 1 hypervisor runs directly on hardware, while a type 2 hypervisor runs on a host operating system. Both approaches need enough physical resources for their workloads; assigning more virtual memory than a host can support does not create real memory. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-4.1-check",
+      "type": "multiple_choice",
+      "prompt": "What distinguishes a type 1 hypervisor?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs directly on hardware",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "It must run inside a browser",
+          "whyWrong": "A browser is not the defining execution layer of a type 1 hypervisor."
+        },
+        {
+          "id": "c",
+          "text": "It requires a host desktop OS",
+          "whyWrong": "A host operating system beneath the hypervisor describes the type 2 model."
+        }
+      ]
+    },
+    {
+      "explanation": "Use the counterpart to host. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Use the counterpart to host. The relevant term is guest. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-4.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "An operating system inside a virtual machine is called the {{blank}}.",
+      "variants": [
+        "The virtualized OS is the {{blank}}, while the physical machine is the host."
+      ],
+      "accepted": [
+        "guest",
+        "guest OS"
+      ],
+      "hint": "Use the counterpart to host."
+    },
+    {
+      "explanation": "No. Snapshots support rollback but can depend on the same underlying storage.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. No. Snapshots support rollback but can depend on the same underlying storage. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-4.1-card",
+      "type": "flashcard",
+      "front": "Is a VM snapshot a complete substitute for an independent backup?",
+      "back": "No. Snapshots support rollback but can depend on the same underlying storage.",
+      "tags": [
+        "virtualization-cloud",
+        "4.1"
+      ]
+    },
+    {
+      "id": "virtual-stack-order",
+      "type": "drag_order",
+      "prompt": "Build a type 2 virtualization stack from the physical foundation upward.",
+      "steps": [
+        {
+          "id": "hardware",
+          "text": "Physical hardware"
+        },
+        {
+          "id": "host",
+          "text": "Host operating system"
+        },
+        {
+          "id": "hypervisor",
+          "text": "Type 2 hypervisor"
+        },
+        {
+          "id": "guest",
+          "text": "Guest operating system"
+        }
+      ],
+      "explanation": "A type 2 hypervisor depends on a host operating system, which itself uses the physical hardware. The guest runs above the hypervisor.",
+      "walkthrough": "Start with the physical hardware. Its host OS runs the type 2 hypervisor. The hypervisor presents virtual hardware to the guest OS. Rebuild the stack from bottom to top.",
+      "lessonAnchor": "concept"
+    }
+  ]
+}

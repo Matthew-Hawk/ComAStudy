@@ -1,0 +1,108 @@
+{
+  "id": "220-1201-2.1",
+  "number": "2.1",
+  "title": "Ports, protocols & purpose",
+  "summary": "Understand the conversation behind a connection.",
+  "visual": "network-packet-hop",
+  "lesson": {
+    "title": "Ports, protocols & purpose",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "An IP address identifies a network interface, while a transport port helps deliver traffic to the intended service. A browser reaching an encrypted website normally uses HTTPS on port 443. DNS normally answers name-resolution queries on port 53. SSH commonly uses port 22 for encrypted remote terminal access. These are conventional defaults, not guarantees: an administrator can move a service to another port."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "TCP establishes a connection, numbers data, and retransmits missing segments so applications receive an ordered byte stream. UDP sends independent datagrams without providing those same delivery guarantees. This lower transport overhead suits applications that manage timing or recovery themselves. DNS commonly uses UDP for ordinary queries but also uses TCP when appropriate; avoid treating a service as permanently tied to only one transport. When diagnosing connectivity, check the destination address, service port, transport, and any firewall rule together."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "An IP address identifies a network interface, while a transport port helps deliver traffic to the intended service. A browser reaching an encrypted website normally uses HTTPS on port 443. DNS normally answers name-resolution queries on port 53. SSH commonly uses port 22 for encrypted remote terminal access. These are conventional defaults, not guarantees: an administrator can move a service to another port.",
+      "walkthrough": "Identify the request in the question. An IP address identifies a network interface, while a transport port helps deliver traffic to the intended service. A browser reaching an encrypted website normally uses HTTPS on port 443. DNS normally answers name-resolution queries on port 53. SSH commonly uses port 22 for encrypted remote terminal access. These are conventional defaults, not guarantees: an administrator can move a service to another port. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-2.1-check",
+      "type": "multiple_choice",
+      "prompt": "A technician needs an encrypted remote terminal. Which default port is the best match?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "22",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "53",
+          "whyWrong": "Port 53 is associated with name resolution, not an encrypted terminal session."
+        },
+        {
+          "id": "c",
+          "text": "80",
+          "whyWrong": "Port 80 usually carries unencrypted web traffic rather than remote terminal access."
+        }
+      ]
+    },
+    {
+      "explanation": "Recall the secure counterpart to HTTP, rather than plain web traffic. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Recall the secure counterpart to HTTP, rather than plain web traffic. The relevant term is 443. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-2.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "The default port for HTTPS is {{blank}}.",
+      "variants": [
+        "An encrypted web service normally listens on TCP port {{blank}}."
+      ],
+      "accepted": [
+        "443"
+      ],
+      "hint": "Recall the secure counterpart to HTTP, rather than plain web traffic."
+    },
+    {
+      "explanation": "An ordered, reliable byte stream using sequencing and retransmission.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. An ordered, reliable byte stream using sequencing and retransmission. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-2.1-card",
+      "type": "flashcard",
+      "front": "What does TCP add that UDP does not provide itself?",
+      "back": "An ordered, reliable byte stream using sequencing and retransmission.",
+      "tags": [
+        "networking",
+        "2.1"
+      ]
+    },
+    {
+      "id": "network-port-match",
+      "type": "drag_match",
+      "prompt": "Match each service to its conventional default port.",
+      "pairs": [
+        {
+          "id": "ssh",
+          "left": "SSH",
+          "right": "22"
+        },
+        {
+          "id": "dns",
+          "left": "DNS",
+          "right": "53"
+        },
+        {
+          "id": "https",
+          "left": "HTTPS",
+          "right": "443"
+        }
+      ],
+      "explanation": "Ports identify service endpoints. Distinguish encrypted terminal access, name resolution, and encrypted web access.",
+      "walkthrough": "SSH uses 22 for a secure terminal, DNS uses 53 for name resolution, and HTTPS uses 443 for encrypted web traffic. Rebuild these pairings in the new arrangement.",
+      "lessonAnchor": "concept"
+    }
+  ]
+}

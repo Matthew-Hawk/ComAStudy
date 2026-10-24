@@ -1,0 +1,9 @@
+{
+  "id": "software-troubleshooting",
+  "exam": "220-1202",
+  "number": 3,
+  "title": "Software Troubleshooting",
+  "description": "Find the cause of application and operating system issues.",
+  "weight": 23,
+  "objectiveCount": 4
+}

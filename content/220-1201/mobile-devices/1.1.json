@@ -1,0 +1,85 @@
+{
+  "id": "220-1201-1.1",
+  "number": "1.1",
+  "title": "Inside a mobile device",
+  "summary": "Replace components with care and a plan.",
+  "visual": "memory-board",
+  "lesson": {
+    "title": "Inside a mobile device",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A laptop packs familiar components into a small, model-specific enclosure. Its battery stores energy, its RAM holds active work, and its SSD retains files after shutdown. A slow system does not automatically need more storage: check whether memory pressure, a full drive, or thermal throttling explains the symptom. Before purchasing a replacement, consult the service guide for the exact model and confirm which components can actually be removed."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "Prepare a clean workspace, shut down the device, disconnect external power, and follow the manufacturer’s battery-disconnection procedure before touching internal parts. Use suitable electrostatic-discharge protection and keep a record of screw positions. Handle memory by its edges rather than its contacts. Antenna leads and ribbon connectors are delicate; release their latches as documented instead of pulling harder. A swollen battery requires an approved safety procedure, never pressure or puncturing."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A laptop packs familiar components into a small, model-specific enclosure. Its battery stores energy, its RAM holds active work, and its SSD retains files after shutdown. A slow system does not automatically need more storage: check whether memory pressure, a full drive, or thermal throttling explains the symptom. Before purchasing a replacement, consult the service guide for the exact model and confirm which components can actually be removed.",
+      "walkthrough": "Identify the request in the question. A laptop packs familiar components into a small, model-specific enclosure. Its battery stores energy, its RAM holds active work, and its SSD retains files after shutdown. A slow system does not automatically need more storage: check whether memory pressure, a full drive, or thermal throttling explains the symptom. Before purchasing a replacement, consult the service guide for the exact model and confirm which components can actually be removed. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-1.1-check",
+      "type": "multiple_choice",
+      "prompt": "Which component holds the active working data of running applications?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "RAM",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "SSD",
+          "whyWrong": "An SSD keeps files between sessions; working data needs a different kind of memory."
+        },
+        {
+          "id": "c",
+          "text": "Battery",
+          "whyWrong": "A battery supplies energy rather than storing application working data."
+        }
+      ]
+    },
+    {
+      "explanation": "Distinguish temporary working memory from persistent storage. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Distinguish temporary working memory from persistent storage. The relevant term is SSD. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-1.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "The component that retains files after shutdown is the {{blank}}.",
+      "variants": [
+        "A laptop uses an {{blank}} for persistent solid-state storage."
+      ],
+      "accepted": [
+        "SSD",
+        "solid-state drive",
+        "solid state drive"
+      ],
+      "hint": "Distinguish temporary working memory from persistent storage."
+    },
+    {
+      "explanation": "Memory may be soldered, and supported module types and replacement procedures vary by model.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. Memory may be soldered, and supported module types and replacement procedures vary by model. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-1.1-card",
+      "type": "flashcard",
+      "front": "Why check a model’s service guide before replacing laptop RAM?",
+      "back": "Memory may be soldered, and supported module types and replacement procedures vary by model.",
+      "tags": [
+        "mobile-devices",
+        "1.1"
+      ]
+    }
+  ]
+}

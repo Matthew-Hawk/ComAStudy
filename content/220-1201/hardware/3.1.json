@@ -1,0 +1,84 @@
+{
+  "id": "220-1201-3.1",
+  "number": "3.1",
+  "title": "Displays, pixels & panels",
+  "summary": "Separate panel technology from display settings.",
+  "visual": "connector-sheet",
+  "lesson": {
+    "title": "Displays, pixels & panels",
+    "passages": [
+      {
+        "id": "concept",
+        "heading": "The core idea",
+        "markdown": "A display’s resolution describes its pixel grid, while its refresh rate describes how often it can update the image each second. These are independent characteristics. A high-resolution panel can still run at a modest refresh rate. Pixel density relates the number of pixels to physical size, which affects perceived sharpness. Color gamut describes the range of colors a display can reproduce rather than how many pixels it contains."
+      },
+      {
+        "id": "application",
+        "heading": "In the real world",
+        "markdown": "LCD panels use a backlight and a liquid-crystal layer to control transmitted light. OLED pixels emit their own light, allowing very dark black regions when pixels are off. IPS, TN, and VA are LCD panel approaches with different viewing-angle, response, and contrast tradeoffs. A digitizer detects touch input; a visible image with unresponsive touch can therefore involve a separate input component. Before replacing a screen, verify the source, cable, supported resolution, and refresh settings using a known-good connection."
+      },
+      {
+        "id": "takeaway",
+        "heading": "Make it stick",
+        "markdown": "Put it into practice by explaining the decision in your own words. In a support scenario, identify the requirement first, connect it to the relevant technology, and check the result against that requirement. If the evidence changes, revisit your reasoning rather than repeating the same action. Document what you observed so the next person can understand your conclusion."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "explanation": "A display’s resolution describes its pixel grid, while its refresh rate describes how often it can update the image each second. These are independent characteristics. A high-resolution panel can still run at a modest refresh rate. Pixel density relates the number of pixels to physical size, which affects perceived sharpness. Color gamut describes the range of colors a display can reproduce rather than how many pixels it contains.",
+      "walkthrough": "Identify the request in the question. LCD panels use a backlight and a liquid-crystal layer to control transmitted light. OLED pixels emit their own light, allowing very dark black regions when pixels are off. IPS, TN, and VA are LCD panel approaches with different viewing-angle, response, and contrast tradeoffs. A digitizer detects touch input; a visible image with unresponsive touch can therefore involve a separate input component. Before replacing a screen, verify the source, cable, supported resolution, and refresh settings using a known-good connection. Now compare the choices with that requirement, ruling out choices that address a different function.",
+      "lessonAnchor": "application",
+      "id": "220-1201-3.1-check",
+      "type": "multiple_choice",
+      "prompt": "Which display component detects a finger touching the screen?",
+      "correct": "a",
+      "options": [
+        {
+          "id": "a",
+          "text": "Digitizer",
+          "whyWrong": "This connects the requirement with the appropriate concept."
+        },
+        {
+          "id": "b",
+          "text": "Backlight",
+          "whyWrong": "A backlight provides illumination rather than sensing touch coordinates."
+        },
+        {
+          "id": "c",
+          "text": "Video cable shielding",
+          "whyWrong": "Cable shielding reduces interference; it does not detect touches."
+        }
+      ]
+    },
+    {
+      "explanation": "Use the unit for frequency. Think about the role described in the sentence and how it differs from the other technologies in this lesson.",
+      "walkthrough": "Read the sentence without the blank and name the role it describes. Use the unit for frequency. The relevant term is Hz. Use the term to complete the fresh prompt.",
+      "lessonAnchor": "concept",
+      "id": "220-1201-3.1-recall",
+      "type": "fill_in_blank",
+      "prompt": "A refresh rate measured in {{blank}} describes updates per second.",
+      "variants": [
+        "A 60 {{blank}} display can update sixty times each second."
+      ],
+      "accepted": [
+        "Hz",
+        "hertz"
+      ],
+      "hint": "Use the unit for frequency."
+    },
+    {
+      "explanation": "OLED pixels emit light; an LCD controls light from a backlight.",
+      "walkthrough": "Break the idea into two parts: the purpose and the limitation. OLED pixels emit light; an LCD controls light from a backlight. Say the explanation aloud, then try to recall it before turning the card again.",
+      "lessonAnchor": "application",
+      "id": "220-1201-3.1-card",
+      "type": "flashcard",
+      "front": "How does OLED produce light differently from LCD?",
+      "back": "OLED pixels emit light; an LCD controls light from a backlight.",
+      "tags": [
+        "hardware",
+        "3.1"
+      ]
+    }
+  ]
+}

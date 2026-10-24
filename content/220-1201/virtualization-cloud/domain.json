@@ -1,0 +1,9 @@
+{
+  "id": "virtualization-cloud",
+  "exam": "220-1201",
+  "number": 4,
+  "title": "Virtualization and Cloud Computing",
+  "description": "Understand virtual environments and shared resources.",
+  "weight": 11,
+  "objectiveCount": 2
+}
