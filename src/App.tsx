@@ -59,10 +59,20 @@ export default function Layout() {
   const dark =
     progress.theme === "dark" || (progress.theme === "system" && systemDark);
   useEffect(() => {
-    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    const root = document.documentElement;
+    root.classList.add("theme-changing");
+    root.dataset.theme = dark ? "dark" : "light";
+    void root.offsetHeight;
+    const frame = requestAnimationFrame(() =>
+      root.classList.remove("theme-changing"),
+    );
     document.documentElement.dataset.motion = String(
       progress.motion && progress.animationMode === "on",
     );
+    return () => {
+      cancelAnimationFrame(frame);
+      root.classList.remove("theme-changing");
+    };
   }, [dark, progress.motion, progress.animationMode]);
   const pageName =
     location.pathname === "/"
@@ -126,19 +136,17 @@ export default function Layout() {
         <div className="sidebar-course">
           <span className="eyebrow">THE LEARNING PATH</span>
           <p className="sidebar-motto">
-            Small steps.
+            Learn the idea.
             <br />
-            Solid understanding.
+            Practice the skill.
           </p>
-          <p>Read a little. Put it into practice. Make it stick.</p>
-          <div className="tiny-path">
-            <span>
-              <Check size={12} />
-            </span>
-            <i />
-            <span>2</span>
-            <i />
-            <span>3</span>
+          <p>Short lessons. Guided practice. Spaced review.</p>
+          <div className="learning-stages">
+            <span>Learn</span>
+            <ChevronRight size={12} aria-hidden="true" />
+            <span>Practice</span>
+            <ChevronRight size={12} aria-hidden="true" />
+            <span>Review</span>
           </div>
         </div>
         <div className="sidebar-footer">
@@ -193,7 +201,7 @@ export default function Layout() {
         </main>
         <footer className="page-footer">
           <span>Built for understanding, one concept at a time.</span>
-          <span>Independent study material · Phase 3</span>
+          <span>Independent CompTIA A+ study material</span>
         </footer>
       </div>
       <RewardFeedback />

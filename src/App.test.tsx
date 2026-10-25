@@ -25,6 +25,29 @@ function app(path = "/") {
   );
 }
 describe("study routes and recovery", () => {
+  it("gives beginners a direct lesson and an unscored, retryable preview", async () => {
+    const user = userEvent.setup();
+    app();
+    expect(
+      screen.queryByRole("link", { name: "Start review" }),
+    ).not.toBeInTheDocument();
+    const original = useStudy.getState().progress;
+    await user.click(screen.getByRole("button", { name: "SSD" }));
+    expect(
+      screen.getByText("Not quite. Here’s the difference."),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "RAM" }));
+    expect(
+      screen.getByText("That’s right. RAM holds active work."),
+    ).toBeInTheDocument();
+    expect(useStudy.getState().progress).toBe(original);
+    await user.click(
+      screen.getByRole("link", { name: "Start your first lesson" }),
+    );
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Inside a mobile device" }),
+    ).toBeInTheDocument();
+  });
   it("opens every chapter without accounts and filters chapters by exam and query", async () => {
     const user = userEvent.setup();
     app();

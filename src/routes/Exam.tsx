@@ -370,7 +370,7 @@ export default function Exam() {
         </label>
         <p className="helper">
           {ready
-            ? `${Math.min(EXAM_LENGTHS[length], available)} questions will be drawn. ${available < EXAM_LENGTHS[length] ? `The seed bank has only ${available} eligible questions, fewer than the requested ${EXAM_LENGTHS[length]}.` : ""} Domain proportions are approximated when a domain has too few available questions.`
+            ? `${Math.min(EXAM_LENGTHS[length], available)} questions will be drawn. ${available < EXAM_LENGTHS[length] ? `The current question bank has only ${available} eligible questions, fewer than the requested ${EXAM_LENGTHS[length]}.` : ""} Domain proportions are approximated when a domain has too few available questions.`
             : "Loading question bank…"}
         </p>
         {error && <p role="status">{error}</p>}

@@ -4,7 +4,6 @@ import { Award, ArrowRight, CalendarCheck, Sparkles, X } from "lucide-react";
 import { domains } from "../content/load";
 import { useStudy } from "../storage";
 import { buildDailyReview, buildChapterSession } from "../engine/session";
-import { currentStreak, localDay } from "../engine/rewards";
 import { domainMastery } from "../engine/mastery";
 import type { DomainIndex as Domain } from "../content/index-types";
 export function useNow() {
@@ -67,42 +66,51 @@ export function LearningDashboard() {
       ? buildChapterSession(d, resume.start)
       : [];
   const item = resume && session[resume.cursor];
+  const hasReview = due > 0 || (progress.review && !progress.review.completed);
+  if (!item && !hasReview && progress.xp === 0 && progress.lessons.length === 0)
+    return null;
   return (
     <section className="learning-dashboard" aria-label="Your learning today">
-      <div>
-        <CalendarCheck size={19} />
-        <strong>{due} reviews due</strong>
-        <Link className="secondary" to="/review">
-          {progress.review && !progress.review.completed
-            ? "Resume review"
-            : "Start review"}
-          <ArrowRight size={14} />
-        </Link>
-      </div>
-      <div>
-        <strong>
-          {currentStreak(progress.streak, localDay(new Date(now)))} day streak
-        </strong>
-        <span>A little learning counts.</span>
-      </div>
-      <div>
-        <Sparkles size={18} />
-        <strong>{progress.xp.toLocaleString()} XP</strong>
-        <span>Earned through practice</span>
-      </div>
       {d && resume && item && (
         <Link
-          className="resume-mini"
+          className="resume-mini primary"
           to={`/chapters/${d.id}/sections/${item.objectiveId}/${item.kind === "lesson" ? "lesson" : `activities/${item.itemId}`}?start=${resume.start}`}
         >
           <span>RESUME CHAPTER</span>
           <strong>{d.title}</strong>
-          <ArrowRight size={17} />
+          <ArrowRight size={17} aria-hidden="true" />
         </Link>
       )}
+      {hasReview && (
+        <div>
+          <CalendarCheck size={19} aria-hidden="true" />
+          <strong>{due} reviews due</strong>
+          <Link className={item ? "secondary" : "primary"} to="/review">
+            {progress.review && !progress.review.completed
+              ? "Resume review"
+              : "Start review"}
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+      )}
+      {progress.xp > 0 && (
+        <div>
+          <Sparkles size={18} aria-hidden="true" />
+          <strong>{progress.xp.toLocaleString()} XP</strong>
+          <span>Earned through practice</span>
+        </div>
+      )}
+      <div>
+        <strong>Keep building your skills</strong>
+        <Link className="inline-link" to="/stats">
+          View your learning progress{" "}
+          <ArrowRight size={14} aria-hidden="true" />
+        </Link>
+      </div>
     </section>
   );
 }
+
 export function RewardFeedback() {
   const { xpTick, notifications, dismissBadge, progress } = useStudy();
   const [visible, setVisible] = useState(false);

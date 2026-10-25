@@ -15,7 +15,7 @@ export default function Stats() {
       <h1>Learning stats</h1>
       <p>
         Completion records what you’ve finished. Mastery reflects independent
-        recall over time. All figures describe the available seed content.
+        recall over time. All figures describe the available lessons.
       </p>
       <dl className="stats-overview">
         {[

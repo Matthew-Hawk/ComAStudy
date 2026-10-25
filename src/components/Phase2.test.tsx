@@ -86,7 +86,7 @@ describe("Phase 2 interaction paths", () => {
     await finishSection(0);
     await user.click(screen.getByRole("link", { name: "Save & exit" }));
     expect(
-      screen.getByText("50% complete · available seed content"),
+      screen.getByText("50% complete · available lessons"),
     ).toBeInTheDocument();
     await user.click(screen.getByRole("link", { name: "← Study library" }));
     expect(
@@ -95,14 +95,14 @@ describe("Phase 2 interaction paths", () => {
       }),
     ).toHaveAttribute("aria-valuenow", "50");
     expect(
-      screen.getByRole("img", {
+      screen.queryByRole("img", {
         name: `${domain.title}: 0% mastery across available sections`,
       }),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
     await user.click(screen.getByRole("link", { name: /RESUME CHAPTER/ }));
     await finishSection(1);
     expect(
-      screen.getByText("100% complete · available seed content"),
+      screen.getByText("100% complete · available lessons"),
     ).toBeInTheDocument();
     await user.click(screen.getByRole("link", { name: "← Study library" }));
     expect(

@@ -78,11 +78,10 @@ export default function Chapter() {
       <div className="chapter-facts">
         <MasteryRing domain={d} />
         <strong>
-          {domainCompletion(d, progress).percent}% complete · available seed
-          content
+          {domainCompletion(d, progress).percent}% complete · available lessons
         </strong>
         <span>{d.weight}% of exam</span>
-        <span>{d.objectives.length} seed sections</span>
+        <span>{d.objectives.length} lessons</span>
         <span>All sections unlocked</span>
       </div>
       {query.get("finished") && (
@@ -194,9 +193,8 @@ export default function Chapter() {
         <p>
           Completion tracks finished activities immediately. Mastery grows
           through independent recall and spaced reviews, so it can remain at 0%
-          after a first pass. Both describe available seed sections. This
-          chapter seeds {d.objectives.length} of {d.objectiveCount} exam
-          objectives.
+          after a first pass. Both describe available lessons. This chapter
+          covers {d.objectives.length} of {d.objectiveCount} exam objectives.
         </p>
       </div>
     </div>
