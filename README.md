@@ -27,6 +27,8 @@ See [accessibility report](docs/accessibility.md) and [performance report](docs/
 
 ## Behavior and settings
 
+The public landing page is `/`. It introduces the learning method and offers a random multiple-choice question from the authored library. Sample answers and retries do not update learning progress. “Try another question” chooses a different available question; content loads on demand with a retry path on failure. The main call to action opens `/study`, the topic-selection workspace with saved progress. Chapter, review, and exam exit links return to that workspace, while the brand link returns to the landing page. Deployments must serve the SPA fallback for `/study` as well as existing deep routes.
+
 - Six activity types, changed retry forms, escalating help, linked lesson passages, and keyboard/tap alternatives to dragging.
 - SM-2-style scheduling, derived mastery, completion tracking, daily review, XP, local-calendar streaks with a weekly freeze, and quiet badge notifications.
 - Practice exams with saved answers/flags, answer review, explicit submission, per-domain results, and missed-question review through the regular learning loop.

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
@@ -15,6 +15,7 @@ beforeEach(() => {
 });
 afterEach(() => {
   cleanup();
+  vi.restoreAllMocks();
   vi.unstubAllGlobals();
 });
 function app(path = "/") {
@@ -25,32 +26,52 @@ function app(path = "/") {
   );
 }
 describe("study routes and recovery", () => {
-  it("gives beginners a direct lesson and an unscored, retryable preview", async () => {
+  it("introduces the site, offers random unscored practice, and opens topic selection", async () => {
     const user = userEvent.setup();
+    vi.spyOn(Math, "random").mockReturnValue(0);
     app();
     expect(
       screen.queryByRole("link", { name: "Start review" }),
     ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /Understand the tech/ }),
+    ).toBeInTheDocument();
     const original = useStudy.getState().progress;
+    await screen.findByRole("button", { name: "SSD" });
     await user.click(screen.getByRole("button", { name: "SSD" }));
     expect(
-      screen.getByText("Not quite. Here’s the difference."),
+      screen.getByText("Not quite. Let’s work through it."),
     ).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "RAM" }));
-    expect(
-      screen.getByText("That’s right. RAM holds active work."),
-    ).toBeInTheDocument();
+    expect(screen.getByText("That’s right. Here’s why.")).toBeInTheDocument();
     expect(useStudy.getState().progress).toBe(original);
     await user.click(
-      screen.getByRole("link", { name: "Start your first lesson" }),
+      screen.getByRole("button", { name: "Try another question" }),
+    );
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("button", { name: "RAM" }),
+      ).not.toBeInTheDocument(),
+    );
+    await screen.findByRole("button", { name: "Try another question" });
+    expect(
+      screen.queryByRole("button", { name: "RAM" }),
+    ).not.toBeInTheDocument();
+    expect(useStudy.getState().progress).toBe(original);
+    await user.click(
+      screen.getByRole("link", { name: "Choose your study topics" }),
     );
     expect(
-      screen.getByRole("heading", { level: 1, name: "Inside a mobile device" }),
+      screen.getByRole("heading", {
+        level: 1,
+        name: "Choose a skill. Start building it.",
+      }),
     ).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /CHAPTER/ })).toHaveLength(5);
   });
   it("opens every chapter without accounts and filters chapters by exam and query", async () => {
     const user = userEvent.setup();
-    app();
+    app("/study");
     expect(screen.getAllByRole("link", { name: /CHAPTER/ })).toHaveLength(5);
     await user.click(screen.getByRole("button", { name: /Core 2/ }));
     expect(screen.getAllByRole("link", { name: /CHAPTER/ })).toHaveLength(4);
@@ -121,6 +142,6 @@ describe("study routes and recovery", () => {
     app("/chapters/absent");
     expect(
       screen.getByRole("link", { name: "Return to library" }),
-    ).toHaveAttribute("href", "/");
+    ).toHaveAttribute("href", "/study");
   });
 });

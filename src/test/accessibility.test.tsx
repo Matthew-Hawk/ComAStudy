@@ -41,6 +41,7 @@ afterEach(() => {
 });
 const paths = [
   "/",
+  "/study",
   "/chapters/mobile-devices",
   `/chapters/mobile-devices/sections/${o.id}/lesson`,
   `/chapters/mobile-devices/sections/${o.id}/activities/${item.id}`,

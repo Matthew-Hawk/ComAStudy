@@ -60,7 +60,7 @@ export default function Chapter() {
   const session = resume ? buildChapterSession(d, resume.start) : [];
   return (
     <div className="chapter-page">
-      <Link className="back-link" to="/">
+      <Link className="back-link" to="/study">
         ← Study library
       </Link>
       <div className="eyebrow">

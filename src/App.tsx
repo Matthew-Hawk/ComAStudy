@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import {
   BookOpen,
-  Check,
   CheckCircle2,
   CircleHelp,
   Layers3,
@@ -35,7 +34,8 @@ function view(name: string) {
           }>,
       );
 }
-const Home = view("Library"),
+const Landing = view("Landing"),
+  Library = view("Library"),
   Chapter = view("Chapter"),
   Flow = view("Flow"),
   Preferences = view("Preferences"),
@@ -47,6 +47,7 @@ const Home = view("Library"),
 export default function Layout() {
   const { progress, update, storageError } = useStudy();
   const location = useLocation();
+  const isLanding = location.pathname === "/";
   const [systemDark, setSystemDark] = useState(
     () => matchMedia("(prefers-color-scheme: dark)").matches,
   );
@@ -76,20 +77,22 @@ export default function Layout() {
   }, [dark, progress.motion, progress.animationMode]);
   const pageName =
     location.pathname === "/"
-      ? "Study library"
-      : location.pathname.startsWith("/exam/results")
-        ? "Practice results"
-        : location.pathname.startsWith("/exam")
-          ? "Practice exam"
-          : location.pathname === "/stats"
-            ? "Learning stats"
-            : location.pathname === "/review"
-              ? "Daily review"
-              : location.pathname === "/settings"
-                ? "Preferences"
-                : location.pathname === "/guide"
-                  ? "How it works"
-                  : "Chapter workspace";
+      ? "Learn practical IT skills"
+      : location.pathname === "/study"
+        ? "Study library"
+        : location.pathname.startsWith("/exam/results")
+          ? "Practice results"
+          : location.pathname.startsWith("/exam")
+            ? "Practice exam"
+            : location.pathname === "/stats"
+              ? "Learning stats"
+              : location.pathname === "/review"
+                ? "Daily review"
+                : location.pathname === "/settings"
+                  ? "Preferences"
+                  : location.pathname === "/guide"
+                    ? "How it works"
+                    : "Chapter workspace";
   useEffect(() => {
     document.title = `${pageName} · ${APP_NAME}`;
   }, [pageName]);
@@ -103,63 +106,84 @@ export default function Layout() {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <aside className="sidebar">
-        <Link className="brand" to="/">
-          <span className="brand-mark">
-            <Layers3 size={22} />
-          </span>
-          {APP_NAME}
-          <span className="beta">BETA</span>
-          <span className="sr-only"> home</span>
-        </Link>
-        <div className="workspace-label">YOUR WORKSPACE</div>
-        <nav aria-label="Main navigation">
-          <NavLink to="/" end>
-            <BookOpen size={19} /> Study library
-          </NavLink>
-          <NavLink to="/guide">
-            <CircleHelp size={19} /> How it works
-          </NavLink>
-          <NavLink to="/review">
-            <CheckCircle2 size={19} /> Daily review
-          </NavLink>
-          <NavLink to="/settings">
-            <Settings2 size={19} /> Preferences
-          </NavLink>
-          <NavLink to="/exam">
-            <ClipboardList size={19} /> Practice exam
-          </NavLink>
-          <NavLink to="/stats">
-            <ChartNoAxesColumn size={19} /> Learning stats
-          </NavLink>
-        </nav>
-        <div className="sidebar-course">
-          <span className="eyebrow">THE LEARNING PATH</span>
-          <p className="sidebar-motto">
-            Learn the idea.
-            <br />
-            Practice the skill.
-          </p>
-          <p>Short lessons. Guided practice. Spaced review.</p>
-          <div className="learning-stages">
-            <span>Learn</span>
-            <ChevronRight size={12} aria-hidden="true" />
-            <span>Practice</span>
-            <ChevronRight size={12} aria-hidden="true" />
-            <span>Review</span>
+      {!isLanding && (
+        <aside className="sidebar">
+          <Link className="brand" to="/">
+            <span className="brand-mark">
+              <Layers3 size={22} />
+            </span>
+            {APP_NAME}
+            <span className="beta">BETA</span>
+            <span className="sr-only"> home</span>
+          </Link>
+          <div className="workspace-label">YOUR WORKSPACE</div>
+          <nav aria-label="Main navigation">
+            <NavLink to="/study" end>
+              <BookOpen size={19} /> Study library
+            </NavLink>
+            <NavLink to="/guide">
+              <CircleHelp size={19} /> How it works
+            </NavLink>
+            <NavLink to="/review">
+              <CheckCircle2 size={19} /> Daily review
+            </NavLink>
+            <NavLink to="/settings">
+              <Settings2 size={19} /> Preferences
+            </NavLink>
+            <NavLink to="/exam">
+              <ClipboardList size={19} /> Practice exam
+            </NavLink>
+            <NavLink to="/stats">
+              <ChartNoAxesColumn size={19} /> Learning stats
+            </NavLink>
+          </nav>
+          <div className="sidebar-course">
+            <span className="eyebrow">THE LEARNING PATH</span>
+            <p className="sidebar-motto">
+              Learn the idea.
+              <br />
+              Practice the skill.
+            </p>
+            <p>Short lessons. Guided practice. Spaced review.</p>
+            <div className="learning-stages">
+              <span>Learn</span>
+              <ChevronRight size={12} aria-hidden="true" />
+              <span>Practice</span>
+              <ChevronRight size={12} aria-hidden="true" />
+              <span>Review</span>
+            </div>
           </div>
-        </div>
-        <div className="sidebar-footer">
-          <span className="local-dot" /> Open access. Your own pace.
-          <p>Progress saved on this device</p>
-        </div>
-      </aside>
-      <div className="app-body">
-        <header className="topbar">
-          <span className="breadcrumb">
-            Your workspace <ChevronRight size={14} />
-            <strong>{pageName}</strong>
-          </span>
+          <div className="sidebar-footer">
+            <span className="local-dot" /> Open access. Your own pace.
+            <p>Progress saved on this device</p>
+          </div>
+        </aside>
+      )}
+      <div className={isLanding ? "landing-shell" : "app-body"}>
+        <header className={isLanding ? "landing-header" : "topbar"}>
+          {isLanding ? (
+            <>
+              <Link className="brand" to="/">
+                <span className="brand-mark">
+                  <Layers3 size={22} aria-hidden="true" />
+                </span>
+                {APP_NAME}
+                <span className="sr-only"> home</span>
+              </Link>
+              <nav aria-label="Landing navigation">
+                <a href="#how-it-works">How it works</a>
+                <a href="#sample-question">Try a question</a>
+                <Link to="/study">
+                  Study topics <ChevronRight size={14} aria-hidden="true" />
+                </Link>
+              </nav>
+            </>
+          ) : (
+            <span className="breadcrumb">
+              Your workspace <ChevronRight size={14} />
+              <strong>{pageName}</strong>
+            </span>
+          )}
           <button
             className="icon-button theme-button"
             aria-label={`Switch to ${dark ? "light" : "dark"} theme`}
@@ -179,7 +203,8 @@ export default function Layout() {
           )}
           <Suspense fallback={<div role="status">Loading workspace…</div>}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Landing />} />
+              <Route path="/study" element={<Library />} />
               <Route path="/chapters/:domainId" element={<Chapter />} />
               <Route
                 path="/chapters/:domainId/sections/:objectiveId/lesson"
@@ -199,7 +224,9 @@ export default function Layout() {
             </Routes>
           </Suspense>
         </main>
-        <footer className="page-footer">
+        <footer
+          className={isLanding ? "page-footer landing-footer" : "page-footer"}
+        >
           <span>Built for understanding, one concept at a time.</span>
           <span>Independent CompTIA A+ study material</span>
         </footer>

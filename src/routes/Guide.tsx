@@ -73,7 +73,7 @@ export default function Guide() {
           </div>
         </section>
       ))}
-      <Link to="/" className="primary">
+      <Link to="/study" className="primary">
         Open the study library <ArrowRight size={17} />
       </Link>
     </div>

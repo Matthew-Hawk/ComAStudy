@@ -47,7 +47,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
   localStorage.clear();
 });
-const app = (path = "/") =>
+const app = (path = "/study") =>
   render(
     <MemoryRouter initialEntries={[path]}>
       <App />
@@ -173,7 +173,7 @@ describe("Phase 2 interaction paths", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: /Continue a chapter/ }),
-    ).toHaveAttribute("href", "/");
+    ).toHaveAttribute("href", "/study");
   });
   it("requires correct answers in review and resumes unfinished attempts after remount", async () => {
     const user = userEvent.setup();

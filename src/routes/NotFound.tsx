@@ -43,7 +43,7 @@ export default function NotFound() {
       <p>
         The link may be incomplete. All chapters are available from the library.
       </p>
-      <Link to="/" className="primary">
+      <Link to="/study" className="primary">
         Return to library
       </Link>
     </div>

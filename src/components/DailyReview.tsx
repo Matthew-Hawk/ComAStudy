@@ -78,7 +78,7 @@ export function DailyReview() {
   if (!session || session.completed)
     return (
       <div className="narrow-page">
-        <Link className="back-link" to="/">
+        <Link className="back-link" to="/study">
           ← Study library
         </Link>
         <div className="eyebrow">DAILY REVIEW</div>
@@ -99,7 +99,7 @@ export function DailyReview() {
             Start {queue.length}-item review <ArrowRight size={17} />
           </button>
         )}
-        <Link className="secondary" to="/">
+        <Link className="secondary" to="/study">
           Continue a chapter <BookOpen size={17} />
         </Link>
       </div>
@@ -128,7 +128,7 @@ export function DailyReview() {
   return (
     <div className="review-page">
       <div className="flow-top">
-        <Link className="back-link" to="/">
+        <Link className="back-link" to="/study">
           Save & exit review
         </Link>
         <span>

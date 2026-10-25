@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Check,
-  CheckCircle2,
   ChevronRight,
   CircleHelp,
   Search,
@@ -15,10 +12,7 @@ import { useStudy } from "../storage";
 import { domainCompletion } from "../engine/completion";
 import { LearningDashboard } from "../components/LearningDashboard";
 import { DomainIcon } from "../components/ChapterBits";
-import sampleLesson from "../../content/220-1201/mobile-devices/1.1.json";
 
-const firstLesson =
-  "/chapters/mobile-devices/sections/220-1201-1.1/lesson?start=220-1201-1.1";
 const capabilities: Record<string, string> = {
   "mobile-devices":
     "Identify laptop components and choose the right device connections.",
@@ -38,83 +32,10 @@ const capabilities: Record<string, string> = {
     "Follow safe support procedures and document your work clearly.",
 };
 
-function LearningPreview() {
-  const [selected, setSelected] = useState<string | null>(null);
-  const question = sampleLesson.activities.find(
-    (item) => item.type === "multiple_choice",
-  )!;
-  const option = question.options!.find((item) => item.id === selected);
-  const correct = selected === question.correct;
-  return (
-    <section className="learning-preview" aria-labelledby="preview-title">
-      <div className="preview-heading">
-        <span className="eyebrow">TRY A PRACTICE QUESTION</span>
-        <BookOpen size={18} aria-hidden="true" />
-      </div>
-      <h2 id="preview-title">A small step toward understanding.</h2>
-      <fieldset className="preview-options">
-        <legend>{question.prompt}</legend>
-        {question.options!.map((answer) => (
-          <button
-            type="button"
-            key={answer.id}
-            aria-pressed={selected === answer.id}
-            onClick={() => setSelected(answer.id)}
-          >
-            <span className="preview-option-mark" aria-hidden="true">
-              {selected === answer.id ? (
-                <Check size={15} />
-              ) : (
-                answer.id.toUpperCase()
-              )}
-            </span>
-            {answer.text}
-          </button>
-        ))}
-      </fieldset>
-      <div
-        className="preview-feedback"
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {option ? (
-          <>
-            <strong>
-              {correct
-                ? "That’s right. RAM holds active work."
-                : "Not quite. Here’s the difference."}
-            </strong>
-            <p>
-              {correct
-                ? "An SSD keeps files after shutdown. RAM holds the data running applications are using right now."
-                : option.whyWrong}{" "}
-              {!correct && "Try another answer."}
-            </p>
-          </>
-        ) : (
-          <p>
-            Choose an answer to see the explanation. This preview won’t change
-            your progress.
-          </p>
-        )}
-      </div>
-      <Link className="preview-lesson-link" to={firstLesson}>
-        Learn how laptop components work{" "}
-        <ArrowRight size={15} aria-hidden="true" />
-      </Link>
-    </section>
-  );
-}
-
-export default function Home() {
+export default function Library() {
   const [exam, setExam] = useState("220-1201");
   const [search, setSearch] = useState("");
   const { progress } = useStudy();
-  const returning =
-    progress.lessons.length > 0 ||
-    progress.xp > 0 ||
-    Object.keys(progress.resume).length > 0;
   const chapters = domains.filter(
     (d) =>
       d.exam === exam &&
@@ -125,72 +46,14 @@ export default function Home() {
   const lessonCount = domains.reduce((sum, d) => sum + d.objectives.length, 0);
   return (
     <div className="home">
-      <LearningDashboard />
-      <div className="learning-intro">
-        <section className="learning-promise" aria-labelledby="home-title">
-          <span className="eyebrow">IT SKILLS, BUILT THROUGH PRACTICE</span>
-          <h1 id="home-title">Build the IT skills to solve real problems.</h1>
-          <p>
-            Learn hardware, networking, operating systems, security, and
-            troubleshooting through short lessons, guided practice, and spaced
-            review.
-          </p>
-          <p className="curriculum-note">
-            IT support fundamentals, organized around CompTIA A+.
-          </p>
-          <div className="intro-actions">
-            <Link
-              className={returning ? "secondary" : "primary"}
-              to={firstLesson}
-            >
-              {returning
-                ? "Revisit the first lesson"
-                : "Start your first lesson"}{" "}
-              <ArrowRight size={17} aria-hidden="true" />
-            </Link>
-            <a className="browse-link" href="#chapters">
-              Browse IT topics <ChevronRight size={16} aria-hidden="true" />
-            </a>
-          </div>
-          <p className="first-lesson-note">
-            Start with laptop components: what RAM, storage, and batteries do.
-          </p>
-          <ul className="intro-reassurance" aria-label="Learning access">
-            <li>
-              <CheckCircle2 size={15} aria-hidden="true" /> Free to explore
-            </li>
-            <li>No account needed</li>
-            <li>Progress saved in this browser</li>
-          </ul>
-        </section>
-        <LearningPreview />
+      <div className="page-heading">
+        <div>
+          <span className="eyebrow">YOUR IT LEARNING WORKSPACE</span>
+          <h1>Choose a skill. Start building it.</h1>
+          <p>Pick a topic below, or continue where you left off.</p>
+        </div>
       </div>
-      <section
-        className="learning-method"
-        aria-label="How you build your skills"
-      >
-        <div>
-          <span>01</span>
-          <div>
-            <h2>Understand the idea</h2>
-            <p>Read a short lesson grounded in everyday IT support.</p>
-          </div>
-        </div>
-        <div>
-          <span>02</span>
-          <div>
-            <h2>Put it into practice</h2>
-            <p>Answer questions and learn from clear explanations.</p>
-          </div>
-        </div>
-        <div>
-          <span>03</span>
-          <div>
-            <h2>Remember what you learn</h2>
-            <p>Return for spaced review as your knowledge grows.</p>
-          </div>
-        </div>
-      </section>
+      <LearningDashboard />
       <section id="chapters">
         <div className="section-heading">
           <div>

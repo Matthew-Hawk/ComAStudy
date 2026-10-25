@@ -41,7 +41,7 @@ export default function Stats() {
             Read a lesson and finish an activity to begin building a picture of
             your progress.
           </p>
-          <Link className="primary" to="/">
+          <Link className="primary" to="/study">
             Explore the library
           </Link>
         </div>

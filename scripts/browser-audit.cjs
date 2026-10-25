@@ -14,6 +14,7 @@ async function main() {
   page.on("pageerror", (e) => failures.push(e.message));
   const paths = [
     "/",
+    "/study",
     "/chapters/mobile-devices",
     "/chapters/mobile-devices/sections/220-1201-1.1/lesson",
     "/chapters/mobile-devices/sections/220-1201-1.1/activities/220-1201-1.1-check",

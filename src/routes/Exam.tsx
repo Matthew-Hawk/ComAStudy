@@ -132,7 +132,7 @@ export default function Exam() {
     return (
       <div className="exam-page">
         <div className="flow-top">
-          <Link to="/" className="back-link">
+          <Link to="/study" className="back-link">
             Save & exit exam
           </Link>
           <span>
