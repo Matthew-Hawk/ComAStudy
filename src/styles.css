@@ -222,52 +222,60 @@ dialog p {
   }
 }
 :root {
-  font-family:
-    Inter,
-    ui-sans-serif,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --bg: #f8f9f7;
+  --bg: #f4f7fc;
   --surface: #fff;
-  --text: #242d29;
-  --muted: #606b65;
-  --border: #e2e7e2;
-  --control-border: #7d8980;
-  --accent: #245d45;
-  --accent-hover: #194a35;
-  --accent-soft: #e9f2eb;
-  --hero: #edf2e9;
-  --hero-text: #284e39;
-  --warning: #f4efdf;
-  --highlight: #f9efc9;
-  --shadow: 0 2px 4px #1c332705;
-  --radius: 12px;
-  --focus: #327b59;
+  --text: #16243b;
+  --muted: #52647f;
+  --border: #d6e0ef;
+  --control-border: #74849e;
+  --accent: #225bbc;
+  --accent-hover: #124b9f;
+  --accent-soft: #e7effc;
+  --hero: #eaf1fd;
+  --hero-text: #233f69;
+  --warning: #fff3d6;
+  --highlight: #e3eefe;
+  --shadow: 0 2px 4px #15346308;
+  --radius: 18px;
+  --accent-solid: #1c5dcc;
+  --accent-solid-hover: #124daf;
+  --on-accent: #ffffff;
+  --panel-edge: #c7d6ed;
+  --panel-shadow: 0 12px 32px #1534630b, inset 0 1px #ffffff;
+  --chrome-bg: #f7faff;
+  --ambient-glow: #4381d613;
+  --focus: #245ed0;
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #151c18;
-  --surface: #1d2621;
-  --text: #e5ece6;
-  --muted: #a4b2a8;
-  --border: #354238;
-  --control-border: #7d8e82;
-  --accent: #a1d6b3;
-  --accent-hover: #b6e9c8;
-  --accent-soft: #2b4031;
-  --hero: #26372b;
-  --hero-text: #c4dec6;
-  --warning: #383324;
-  --highlight: #4b4121;
+  --bg: #05070d;
+  --surface: #0c1425;
+  --text: #ebf2ff;
+  --muted: #9aaac4;
+  --border: #24334d;
+  --control-border: #647895;
+  --accent: #85b7ff;
+  --accent-hover: #acd0ff;
+  --accent-soft: #102545;
+  --hero: #101d33;
+  --hero-text: #b8d0f5;
+  --warning: #302819;
+  --highlight: #263955;
   --shadow: 0 2px 4px #0002;
-  --focus: #b2e8c3;
+  --focus: #b2d6ff;
+  --accent-solid: #1c5dcc;
+  --accent-solid-hover: #2468db;
+  --on-accent: #ffffff;
+  --panel-edge: #35537b;
+  --panel-shadow: 0 16px 40px #00000026, inset 0 1px #a3caff12;
+  --chrome-bg: #080e1a;
+  --ambient-glow: #144c9c29;
   color-scheme: dark;
 }
 * {

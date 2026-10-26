@@ -1,0 +1,512 @@
+/* Shared Neon Glass language for the learning workspace. Technical copy keeps its case. */
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    ellipse 1100px 850px at 100% 0%,
+    var(--ambient-glow),
+    transparent 75%
+  );
+  background-attachment: fixed;
+}
+.app-body {
+  isolation: isolate;
+}
+.sidebar {
+  background: var(--chrome-bg);
+  padding-top: 29px;
+}
+.sidebar .brand {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  text-transform: lowercase;
+}
+.sidebar .brand-mark {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--panel-edge);
+  border-radius: 11px;
+  width: 34px;
+  height: 34px;
+  box-shadow: inset 0 0 16px var(--ambient-glow);
+}
+.beta {
+  font-weight: 550;
+  letter-spacing: 0.5px;
+}
+.workspace-label,
+.eyebrow {
+  font-size: 10px;
+  font-weight: 550;
+  letter-spacing: 1.1px;
+}
+.sidebar nav a {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 450;
+}
+.sidebar nav a.active {
+  border-color: var(--panel-edge);
+  background: linear-gradient(110deg, var(--accent-soft), var(--chrome-bg));
+  box-shadow: inset 2px 0 var(--accent);
+}
+.sidebar nav a svg {
+  stroke-width: 1.6;
+}
+.sidebar .sidebar-motto {
+  font-weight: 450;
+  letter-spacing: -0.65px;
+}
+.sidebar-course {
+  margin-top: 36px;
+}
+.sidebar-course p {
+  line-height: 1.8;
+}
+.topbar {
+  background: var(--chrome-bg);
+  min-height: 78px;
+  height: auto;
+  gap: 16px;
+  padding-block: 14px;
+}
+.theme-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 10px;
+}
+.app-body main {
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+.app-body h1 {
+  font-weight: 450;
+  letter-spacing: -1.25px;
+}
+.app-body h2,
+.app-body h3 {
+  font-weight: 500;
+}
+.page-heading h1 {
+  font-size: clamp(30px, 3.3vw, 42px);
+  margin-top: 14px;
+}
+.page-heading p,
+.section-heading p {
+  line-height: 1.85;
+}
+.page-heading {
+  margin-bottom: 30px;
+}
+.chapter-title h1 {
+  font-size: clamp(28px, 3vw, 38px);
+}
+.flow-layout h1 {
+  font-size: clamp(28px, 2.8vw, 36px);
+  line-height: 1.25;
+}
+.narrow-page > h1,
+.review-page > h1,
+.stats-page > h1,
+.exam-page > h1,
+.exam-results > h1 {
+  font-size: clamp(29px, 3vw, 38px);
+  margin-block: 16px;
+}
+
+/* Static edge light and a restrained surface gradient replace the old flat green panels. */
+:is(
+  .chapter-card,
+  .preference-card,
+  .activity-panel,
+  .exam-question,
+  .stats-overview > div,
+  .chart-panel,
+  .mastery-details,
+  .section-map > li,
+  .resume-banner,
+  .learning-dashboard > div,
+  .learning-dashboard > .resume-mini,
+  .badge-toast,
+  dialog
+) {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent) 5%, var(--surface)),
+    var(--surface) 68%
+  );
+  border: 1px solid var(--border);
+  border-top-color: var(--panel-edge);
+  border-radius: var(--radius);
+  box-shadow: var(--panel-shadow);
+}
+.chapter-card {
+  padding: 25px 25px 0;
+}
+.chapter-card .card-progress {
+  margin-inline: -25px;
+}
+.chapter-card h3 {
+  font-size: 19px;
+  letter-spacing: -0.4px;
+}
+.domain-icon {
+  border: 1px solid var(--panel-edge);
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+.domain-icon.large {
+  border-radius: 16px;
+}
+.card-top {
+  margin-bottom: 22px;
+}
+.domain-number {
+  letter-spacing: 1px;
+}
+.card-bottom {
+  padding-block: 17px;
+  line-height: 1.7;
+}
+.home .chapter-card > p {
+  color: var(--muted);
+  line-height: 1.85;
+}
+.completion-summary strong {
+  font-weight: 550;
+}
+.learning-dashboard {
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.learning-dashboard > div {
+  align-content: start;
+}
+.learning-dashboard .resume-mini.primary {
+  background: linear-gradient(
+    140deg,
+    var(--accent-solid-hover),
+    var(--accent-solid)
+  );
+  border-color: var(--accent-solid);
+  border-top-color: var(--accent);
+  color: var(--on-accent);
+}
+.primary {
+  background: linear-gradient(var(--accent-solid-hover), var(--accent-solid));
+  border: 1px solid var(--accent-solid);
+  border-top-color: var(--accent-solid-hover);
+  color: var(--on-accent);
+  box-shadow:
+    inset 0 1px #ffffff22,
+    0 3px 16px var(--ambient-glow);
+  border-radius: 9px;
+}
+.secondary,
+.icon-button {
+  border-radius: 9px;
+}
+.secondary {
+  background: var(--surface);
+  border-color: var(--control-border);
+}
+.search {
+  border-radius: 12px;
+  background: var(--surface);
+  padding-inline: 14px;
+  min-height: 46px;
+}
+.exam-tabs button {
+  min-height: 52px;
+}
+.exam-tabs button[aria-pressed="true"]::after {
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+}
+.exam-tabs .tab-count {
+  background: var(--accent-soft);
+  border-radius: 6px;
+}
+.section-map > li {
+  padding: 26px;
+}
+.map-node {
+  background: var(--accent-soft);
+  border-color: var(--panel-edge);
+  color: var(--accent);
+  border-radius: 12px;
+}
+.map-node.done {
+  background: var(--accent-solid);
+  color: var(--on-accent);
+}
+.section-status {
+  font-size: 11px;
+  line-height: 1.8;
+}
+.chapter-facts {
+  align-items: center;
+  line-height: 1.8;
+}
+.session-outline {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-top-color: var(--panel-edge);
+  border-radius: 14px;
+  align-self: start;
+  background: var(--surface);
+}
+.session-outline > div:first-of-type {
+  margin-top: 12px;
+}
+.session-outline > p {
+  line-height: 1.8;
+}
+.lesson-label {
+  margin-top: 10px;
+}
+.prose {
+  line-height: 1.9;
+  max-width: 76ch;
+}
+.prose h2 {
+  font-size: 18px;
+}
+.prose p {
+  line-height: 1.9;
+}
+.lesson-end {
+  gap: 20px;
+  padding-block: 28px;
+}
+.visual {
+  background: linear-gradient(135deg, var(--hero), var(--surface));
+  border-top-color: var(--panel-edge);
+  border-radius: 16px;
+}
+.activity-panel {
+  padding: 28px;
+}
+.activity-panel > h2,
+.exam-question h2 {
+  font-size: 22px;
+  font-weight: 500;
+}
+.choice,
+.token,
+.drop-target,
+.exam-review-list button {
+  background: var(--surface);
+  border-radius: 11px;
+  border-color: var(--control-border);
+}
+.choice.selected,
+.token.selected,
+.drop-target.over {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.option-letter {
+  border-color: var(--control-border);
+  border-radius: 7px;
+}
+.answer-label input,
+.preference-card select,
+dialog form input {
+  background: var(--surface);
+  border-color: var(--control-border);
+  border-radius: 9px;
+}
+.feedback {
+  border-radius: 16px;
+  border-top-color: var(--panel-edge);
+}
+.feedback.learning {
+  background: var(--warning);
+}
+.feedback.success {
+  background: var(--accent-soft);
+}
+.walkthrough {
+  border-radius: 10px;
+}
+.card-answer {
+  border: 1px solid var(--panel-edge);
+  border-radius: 14px;
+}
+.preference-card {
+  padding: 28px;
+}
+.preference-card h2 {
+  margin-bottom: 22px;
+}
+.settings-grid {
+  gap: 20px;
+}
+.settings-grid label {
+  line-height: 1.7;
+}
+.settings-grid > label:not(.toggle-row) {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 0;
+}
+.toggle-row {
+  gap: 20px;
+}
+.stats-overview > div {
+  padding: 24px;
+}
+.stats-overview dd {
+  color: var(--accent);
+  font-weight: 450;
+  font-variant-numeric: tabular-nums;
+}
+.chart-panel {
+  padding: 26px;
+}
+.chart-panel h2 {
+  font-size: 19px;
+  margin-bottom: 18px;
+}
+.mastery-details {
+  padding: 19px;
+}
+.mastery-details summary {
+  line-height: 1.8;
+}
+.mastery-details summary::marker {
+  color: var(--accent);
+}
+.weakest-list li,
+.miss-list li {
+  border-radius: 12px;
+  background: var(--surface);
+}
+.guide-step h2 {
+  font-weight: 450;
+}
+.guide-step > span {
+  border: 1px solid var(--panel-edge);
+  border-radius: 9px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  flex-shrink: 0;
+  background: var(--accent-soft);
+}
+.score-summary {
+  font-weight: 500;
+}
+dialog {
+  overscroll-behavior: contain;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+}
+dialog::backdrop {
+  background: #030712bd;
+}
+.badge-toast {
+  border-radius: 15px;
+}
+.page-footer {
+  background: transparent;
+}
+@media (hover: hover) {
+  .primary:hover {
+    background: var(--accent-solid-hover);
+  }
+  .secondary:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+  .chapter-card:hover {
+    border-color: var(--panel-edge);
+    box-shadow: var(--panel-shadow);
+  }
+  .sidebar nav a:hover {
+    background: var(--accent-soft);
+  }
+}
+@media (max-width: 850px) {
+  .sidebar {
+    padding: 17px 22px;
+  }
+  .sidebar .brand {
+    font-size: 20px;
+  }
+  .app-body main {
+    padding-top: 30px;
+  }
+  .sidebar nav a {
+    padding: 9px;
+  }
+}
+@media (max-width: 580px) {
+  .sidebar {
+    padding: 16px;
+  }
+  .sidebar nav a {
+    padding: 9px 7px;
+  }
+  .sidebar nav a.active {
+    box-shadow: inset 0 -2px var(--accent);
+  }
+  .app-body main {
+    padding: 27px 20px 32px;
+  }
+  .page-heading h1 {
+    font-size: 31px;
+  }
+  .chapter-card {
+    padding: 22px 22px 0;
+  }
+  .chapter-card .card-progress {
+    margin-inline: -22px;
+  }
+  .home .chapter-card > p {
+    font-size: 13px;
+  }
+  .card-top {
+    margin-bottom: 18px;
+  }
+  .section-map > li {
+    padding: 22px;
+  }
+  .activity-panel,
+  .exam-question {
+    padding: 22px 17px;
+  }
+  .activity-panel > h2,
+  .exam-question h2 {
+    font-size: 20px;
+  }
+  .preference-card {
+    padding: 22px;
+  }
+  .feedback {
+    padding: 19px;
+  }
+  .stats-overview > div {
+    padding: 18px;
+  }
+  .chart-panel {
+    padding: 20px 14px;
+  }
+  .mastery-details {
+    padding: 16px;
+  }
+  dialog {
+    padding: 24px;
+  }
+}
+@media (forced-colors: active) {
+  .sidebar nav a.active {
+    border-color: Highlight;
+  }
+  .primary {
+    border-color: ButtonText;
+  }
+}
